@@ -22,7 +22,11 @@ no model or firmware allowlist. This Tab 8 supports the full nine-field native
 endpoint schema, independently of the older Palma schema fix.
 
 Signed installation used the existing certificate. BOOX initially disabled the
-new package; it was explicitly enabled. All Files Access is granted. The final
+new package; it was explicitly enabled. After the final in-place update, BOOX
+re-disabled it. In native Freeze Settings, the PowerSync-specific Freeze checkbox
+was turned off. Final readback shows **Freeze new apps** off and **Auto Freeze:**
+**Do not freeze**. The agent targeted only the PowerSync row; the global setting
+changed during this interval without an agent toggle of that control. All Files Access is granted. The final
 APK also contains the [Palma post-update status comparison fix](README.md).
 The combined build passes 65 unit tests, lint (0 errors / 12 existing warnings),
 and release/test assembly. These are local builds; GitHub still publishes 0.3.3.

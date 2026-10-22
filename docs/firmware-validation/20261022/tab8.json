@@ -95,5 +95,13 @@
     "syntheticEPUBPresent": true,
     "syntheticPDFPresent": true
   },
-  "bothInstalledAPKsMatchBuild": true
+  "bothInstalledAPKsMatchBuild": true,
+  "freezeSettings": {
+    "freezeNewApps": false,
+    "autoFreeze": "Do not freeze",
+    "powerSyncFrozen": false,
+    "changedOnlyPowerSyncFreeze": true,
+    "globalSettingChangedDuringObservation": true,
+    "globalChangeAttribution": "Not established; agent only toggled PowerSync row"
+  }
 }
