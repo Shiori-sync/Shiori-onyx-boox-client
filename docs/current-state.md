@@ -1,5 +1,16 @@
 # PowerSync implementation state
 
+2026-10-22: **Fresh Palma 2 Pro exposed an older native endpoint schema.** Local
+PowerSync **0.3.4/code 15** permits only the unsupported template-host omission
+when the saved pre-transition native schema proves it is absent. Account/sync
+endpoint checks remain strict. All 58 unit tests and signed build pass; lint has
+0 errors / 12 existing warnings. Certificate-matched in-place installation and
+normal recovery restore the initial cluster map and empty account/library state.
+Fresh connection awaits a new enrollment code because management SSH is unavailable;
+the user-requested firmware-update experiment has not begun. See
+[baseline, fix, and continuation](firmware-validation/20261022/README.md).
+The latest published release remains 0.3.3.
+
 2026-10-20: **[PowerSync 0.3.3 is published](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.3)**
 and is GitHub's latest release. Tag `v0.3.3` targets `e720b4c867e0a56f8f66dbc29ff13ab48feece56`.
 [CI run #3](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39464804296)

@@ -47,6 +47,13 @@ public class NativeReadCompatibilityTest extends Instrumentation {
         for (String key : new String[]{"phase", "hasBaseline", "available", "accountLoggedIn", "identityMatches", "configurationMatches", "allFilesAccess", "flags"})
             report.append(key).append('=').append(status.opt(key)).append('\n');
         if (journal != null) report.append("transitionUpdatedAt=").append(journal.optLong("updatedAt")).append('\n');
+        org.json.JSONObject installed = controller.state.read("installed-cluster");
+        org.json.JSONObject profile = controller.state.read("profile");
+        if (installed != null && profile != null) {
+            String id = profile.getJSONObject("cluster").getString("clusterId");
+            org.json.JSONObject actual = controller.nativeIO.read(NativeBridge.CLUSTER).getJSONObject("clusterMap").optJSONObject(id);
+            if (actual != null) report.append("installedEntryDifferencePaths=").append(differencePaths(installed, actual, "")).append('\n');
+        }
         if (baseline == null) return report.toString();
         report.append("notebookFingerprintMatches=").append(baseline.getString("fingerprint").equals(controller.nativeIO.fingerprint())).append('\n');
         org.json.JSONArray before = baseline.getJSONArray("catalog"), now = controller.nativeIO.catalog();
@@ -79,6 +86,21 @@ public class NativeReadCompatibilityTest extends Instrumentation {
             .append("; existingFallbackPaths=").append(fallbackFiles)
             .append("; fetchSourceCounts=").append(sources).append('\n');
         return report.toString();
+    }
+
+    /** Differences contain schema paths only, never configuration values. */
+    private static java.util.List<String> differencePaths(org.json.JSONObject expected, org.json.JSONObject actual, String prefix) throws Exception {
+        java.util.Set<String> keys = new java.util.TreeSet<>();
+        expected.keys().forEachRemaining(keys::add); actual.keys().forEachRemaining(keys::add);
+        java.util.List<String> paths = new java.util.ArrayList<>();
+        for (String key : keys) {
+            Object a = expected.opt(key), b = actual.opt(key);
+            String path = prefix + key;
+            if (a instanceof org.json.JSONObject && b instanceof org.json.JSONObject)
+                paths.addAll(differencePaths((org.json.JSONObject)a, (org.json.JSONObject)b, path + "."));
+            else if (!NativeBridge.canonical(a).equals(NativeBridge.canonical(b))) paths.add(path);
+        }
+        return paths;
     }
 
     private static void assertTrue(boolean value) { if (!value) throw new AssertionError(); }

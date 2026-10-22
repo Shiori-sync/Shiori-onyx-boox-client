@@ -1,0 +1,12 @@
+{
+  "version": "0.3.4",
+  "versionCode": 15,
+  "apkSHA256": "70dbd2a1838bccb2edd8c8050af4676d3ab621e3808bd51c9ada87a820a3240b",
+  "certificateSHA256": "f61b114923bef983aa12e876ea12bbc52f017363ef7103a96c2f978dc19aeb35",
+  "tests": 58,
+  "failures": 0,
+  "lint": {
+    "Warning": 12
+  },
+  "published": false
+}
