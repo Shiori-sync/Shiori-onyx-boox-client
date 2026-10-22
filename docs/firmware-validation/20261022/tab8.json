@@ -1,0 +1,99 @@
+{
+  "model": "Tab8",
+  "android": "11",
+  "api": 30,
+  "firmware": "2026-06-03_18-47_4.2-rel_0603_095d17272b",
+  "ksyncCode": 32125,
+  "notesCode": 45446,
+  "originalCluster": "zh",
+  "originalAccountRows": 0,
+  "initialReaderRows": 6,
+  "initialNoteRows": 1,
+  "enrollment": "active",
+  "identityMatches": true,
+  "configurationMatches": true,
+  "syncFlags": {
+    "key_enable_sync_note_data": "true",
+    "key_enable_sync_reader_data": "true"
+  },
+  "ordinaryUIDReadChecks": 2,
+  "baselineBookUUIDsMissing": 0,
+  "userDeletedNotePreserved": {
+    "originalNotePresent": true,
+    "originalNoteStatus": "0",
+    "originalNoteProjectionUnchanged": true
+  },
+  "nativeSync": {
+    "at": "2026-10-22T05:38:46.142881+00:00",
+    "reader": {
+      "rows": 6,
+      "digest": "d557870716e6bdd9ea90d5bb4a35aff8ab081bbdad76322ac475f6c730add648",
+      "states": {
+        "fileSyncStatus": {
+          "0": 6
+        },
+        "userDataSyncStatus": {
+          "0": 6
+        }
+      }
+    },
+    "notes": {
+      "rows": 1126,
+      "digest": "af6532d09e1afdacf233c58b081cb7405705e8778990da06f19b218390634bde",
+      "states": {
+        "type": {
+          "1": 1122,
+          "0": 4
+        },
+        "status": {
+          "0": 48,
+          "1": 1078
+        },
+        "noteSyncStatus": {
+          "1": 1126
+        }
+      }
+    },
+    "nativeLog": {
+      "pid": 2560,
+      "firstLogEpoch": 1792646710.452,
+      "lastLogEpoch": 1792647528.073,
+      "eventsInWindow": {
+        "StreamResetException": 4,
+        "REFUSED_STREAM": 4
+      },
+      "documentsReportedInWindow": {},
+      "taskReportsInWindow": 63,
+      "successfulTasksReportedInWindow": 2260,
+      "otherTasksReportedInWindow": 0,
+      "lastTaskReportEpoch": 1792647528.006
+    }
+  },
+  "build": {
+    "version": "0.3.5",
+    "versionCode": 16,
+    "minSDK": 30,
+    "apkSHA256": "d8ed71bf0dc792934d3c7264d3e9d65de12a476d266e864d3a2066f49f20bb05",
+    "certificateSHA256": "f61b114923bef983aa12e876ea12bbc52f017363ef7103a96c2f978dc19aeb35",
+    "tests": {
+      "tests": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "lint": {
+      "Warning": 12
+    },
+    "published": false,
+    "includesFirmwareStatusFix": true,
+    "at": "2026-10-22T05:39:26.341699+00:00"
+  },
+  "readingCatalog": {
+    "baselineBookUUIDs": 6,
+    "currentBookUUIDs": 144,
+    "missingBaselineUUIDs": 0,
+    "syntheticEPUBPresent": true,
+    "syntheticPDFPresent": true
+  },
+  "bothInstalledAPKsMatchBuild": true
+}

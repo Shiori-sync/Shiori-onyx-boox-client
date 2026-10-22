@@ -1,0 +1,139 @@
+{
+  "capturedBeforePowerSyncLaunch": true,
+  "beforeFirmware": {
+    "ro.product.model": "Palma2_Pro_C",
+    "ro.build.display.id": "2025-12-13_09-57_4.1.1-rel_1213_9755ef7ea",
+    "ro.build.fingerprint": "ONYX/TabBoox/TabBoox:13/TKQ1.230615.001/GV2.023.SQ83A:user/release-keys",
+    "ro.build.version.incremental": "77",
+    "ro.build.version.release": "15",
+    "ro.build.version.sdk": "35",
+    "ro.build.version.security_patch": "2025-10-01"
+  },
+  "afterFirmware": {
+    "ro.product.model": "Palma2_Pro_C",
+    "ro.build.display.id": "2026-08-10_11-54_4.2-rel_0810_74616a570",
+    "ro.build.fingerprint": "ONYX/TabBoox/TabBoox:13/TKQ1.230615.001/GV2.027.SQ83A:user/release-keys",
+    "ro.build.version.incremental": "230",
+    "ro.build.version.release": "15",
+    "ro.build.version.sdk": "35",
+    "ro.build.version.security_patch": "2026-04-01"
+  },
+  "rebootObserved": true,
+  "unchangedAcrossFirmwareUpdate": {
+    "selectedCluster": true,
+    "syncFlags": true,
+    "accountIdentitySHA256": true,
+    "nativeMarker": true,
+    "allFilesAccessAllowed": true,
+    "installedAPK_SHA256": true
+  },
+  "selectedEndpointDifferencePaths": [
+    "clusterHost.onyxMaterialHostBaseUrl"
+  ],
+  "difference": "Added the exact enrolled template host; native marker unchanged",
+  "postUpdatePackages": {
+    "dev.aragonite.powersync.client": {
+      "versionCode": [
+        "15"
+      ],
+      "versionName": [
+        "0.3.4"
+      ]
+    },
+    "com.onyx.android.ksync": {
+      "versionCode": [
+        "32173"
+      ],
+      "versionName": [
+        "32173 - b4fcdaedf89b"
+      ]
+    },
+    "com.onyx.android.note": {
+      "versionCode": [
+        "45960"
+      ],
+      "versionName": [
+        "45960 - 7a61edc5f683"
+      ]
+    },
+    "com.onyx.kreader": {
+      "versionCode": [
+        "38999"
+      ],
+      "versionName": [
+        "38999 - ab204ac90728"
+      ]
+    }
+  },
+  "appEnabledBefore": 1,
+  "appEnabledAfter": 3,
+  "freezeExplanation": "Owner identified BOOX auto-freeze policy; native sync continued with product app disabled",
+  "postUpdateNativeSync": {
+    "at": "2026-10-22T05:34:41.663699+00:00",
+    "reader": {
+      "rows": 138,
+      "digest": "7c1bcbee9b5ae0eb4cad542cfb6c60a8870ac4bbc902e2c3dcf5a5da8d0682af",
+      "states": {
+        "fileSyncStatus": {
+          "0": 86,
+          "3": 46,
+          "2": 6
+        },
+        "userDataSyncStatus": {
+          "1": 138
+        }
+      }
+    },
+    "notes": {
+      "rows": 1125,
+      "digest": "03194ab4d09571a0264447c69bc7ba40240b8be4247cba340e3d4b26e42bb375",
+      "states": {
+        "type": {
+          "1": 1121,
+          "0": 4
+        },
+        "status": {
+          "1": 1078,
+          "0": 47
+        },
+        "noteSyncStatus": {
+          "1": 1125
+        }
+      }
+    },
+    "nativeLog": {
+      "pid": 4515,
+      "firstLogEpoch": 1792647055.123,
+      "lastLogEpoch": 1792647283.887,
+      "eventsInWindow": {
+        "StreamResetException": 1,
+        "REFUSED_STREAM": 1
+      },
+      "documentsReportedInWindow": {},
+      "taskReportsInWindow": 196,
+      "successfulTasksReportedInWindow": 6603,
+      "otherTasksReportedInWindow": 0,
+      "lastTaskReportEpoch": 1792647283.708
+    }
+  },
+  "postStatusFix": {
+    "version": "0.3.5",
+    "configurationMatches": true,
+    "nativeStateUnchanged": {
+      "clusterSHA256": true,
+      "systemSHA256": true,
+      "selectedEndpoints": true,
+      "syncFlags": true,
+      "accountIdentitySHA256": true,
+      "nativeMarker": true,
+      "allFilesAccessAllowed": true
+    },
+    "ordinaryUIDReadChecks": 2
+  },
+  "freezeSettingsObserved": {
+    "freezeNewApps": false,
+    "autoFreeze": "Do not freeze",
+    "powerSyncFrozen": false,
+    "settingsChangedByAgent": false
+  }
+}

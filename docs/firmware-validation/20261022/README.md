@@ -1,8 +1,11 @@
-# Fresh Palma 2 Pro enrollment and firmware-update baseline
+# Palma firmware update and China-market Tab 8 validation
 
 The owner requested installation and connection on a new, previously unsigned-in
 Palma 2 Pro, followed by a user-initiated firmware update to test connection
-persistence. **The firmware update has not been started.**
+persistence. **The full update from 4.1.1 to 4.2 completed and native sync survived
+without re-enrollment or connection repair.** The original baseline and first
+failed download are retained below. The China-market Android 11 Tab 8 also joined
+successfully; see [Tab 8 results](tab8.md).
 
 ## Initial state
 
@@ -51,7 +54,7 @@ PowerSync's normal Return to previous server flow then restored the exact origin
 cluster-map hash, selected server, account/library state, and sync flags. The custom
 marker was removed. Recovery did not require the server or manual native writes.
 
-## Current checkpoint and next observation
+## Pre-update checkpoint
 
 **4.1.x compatibility is confirmed on this tested 4.1.1 build with local
 PowerSync 0.3.4/code 15.** This is observed device evidence, not a claim that every
@@ -79,9 +82,7 @@ The final [pre-update checkpoint](pre-update.json) confirms:
 - The disposable read-only diagnostic package was removed. PowerSync remains
   connected. No firmware update has been started by the agent.
 
-The device is ready for the owner to initiate the firmware update. PowerSync 0.3.4
-and this firmware build are the comparison baseline. Do not upgrade PowerSync at
-the same time, since that would confound the connection-persistence experiment.
+PowerSync 0.3.4 and this firmware build were held fixed for the firmware experiment.
 
 ### First firmware download attempt
 
@@ -97,15 +98,49 @@ are unchanged from the pre-update baseline.
 A contemporaneous laptop TCP probe reached ports 80 and 443, but resolved a
 different address set from the tablet's failed attempts. This supports a download
 connectivity/CDN-path problem; it does not establish a specific DNS, Wi-Fi, or
-server root cause. The full-update persistence experiment remains pending.
+server root cause. This attempt did not exercise firmware persistence.
 
-After the update, first capture firmware, package state, native account/selection,
-flags, marker and cluster hashes **before opening PowerSync or attempting repair**.
-Then open PowerSync, record its status, and verify actual native sync. This separates
-firmware persistence from app-assisted recovery. Leave firmware initiation to the
-owner.
+## Successful full update
+
+The owner's retry installed `2026-08-10_11-54_4.2-rel_0810_74616a570`, incremental
+230, Android 15/API 35, security patch 2026-04-01. A changed boot ID confirms a
+reboot. Native ksync is now 32173, Notes 45960 and Reader 38999.
+[Post-update comparison](post-update.json) was captured **before opening PowerSync
+or repairing anything**:
+
+- Same account identity, selected Alexandria cluster, both enabled sync flags,
+  native marker, All Files Access, and byte-identical PowerSync 0.3.4 APK.
+- Native sync was already operating: 138 Reader rows and 1,125 note/folder rows;
+  the bounded native log window reported successful transfer tasks. These are
+  observations, not proof of complete resource downloads or distinct task counts.
+- The sole selected-entry difference is the newer firmware adding
+  `clusterHost.onyxMaterialHostBaseUrl`, matching the saved enrollment value.
+- PowerSync itself was disabled (`enabled=3`, previously `1`). The owner identified
+  BOOX's Freeze policy. Native sync continued while the companion was disabled.
+  The app was enabled separately; later Settings inspection showed **Freeze new
+  apps off**, **Auto Freeze: Do not freeze**, and PowerSync unfrozen. No global
+  Freeze setting was changed by the agent.
+
+Opening 0.3.4 exposed a status defect: it compared the older saved eight-field
+entry literally with the upgraded nine-field entry, reporting attention despite
+the intact connection. Local **0.3.5/code 16** accepts this single addition only
+when the pre-transition schema proves the old omission and the new value exactly
+matches the enrolled template host. All other configuration comparisons remain
+strict. Status, restoration guards and endpoint-maintenance guards use the same
+comparison; it does not rewrite native state or the saved baseline.
+
+After the experiment was captured, a certificate-matched in-place 0.3.5 installation
+reported active phase and matching account/configuration. Cluster/system hashes,
+selected endpoints, account, flags, marker and permission stayed unchanged across
+that app update. No re-enrollment, Resume, or endpoint repair was needed on Palma.
+The restore and maintenance guards were unit-tested; live restore was deliberately
+not exercised on the working connection.
+
+The combined Android 11 and firmware-status changes pass **65 unit tests**, lint
+with **0 errors / 12 existing warnings**, and signed release/test assembly.
+Both devices have local 0.3.5; the published release remains 0.3.3.
 
 Private device snapshots, APKs, diagnostic output, decompiled evidence and UI XML
 are in ignored `artifacts/palma-firmware-20261021/`. The dated path is retained from
 the initial interrupted attempt. No credentials or raw account/provider rows are
-included in this document. Version 0.3.4 is a local build, not a published release.
+included in this document. Versions 0.3.4 and 0.3.5 are local builds, not published releases.

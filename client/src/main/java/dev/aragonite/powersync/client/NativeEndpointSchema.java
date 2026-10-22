@@ -48,4 +48,23 @@ final class NativeEndpointSchema {
         copy.put("clusterHost", expectedHosts(expected.getJSONObject("clusterHost"), actual.getJSONObject("clusterHost"), baselineCluster));
         return copy;
     }
+
+    /** A firmware upgrade can restore the enrolled template host from the native marker.
+     * Compare without rewriting the saved installation or accepting any other drift. */
+    static boolean installedEntryMatches(JSONObject installed, JSONObject actual, JSONObject enrolled,
+                                         JSONObject baselineCluster) throws JSONException {
+        if (installed == null || actual == null) return false;
+        JSONObject expected = new JSONObject(installed.toString());
+        JSONObject savedHosts = expected.optJSONObject("clusterHost");
+        JSONObject liveHosts = actual.optJSONObject("clusterHost");
+        JSONObject enrolledHosts = enrolled == null ? null : enrolled.optJSONObject("clusterHost");
+        if (savedHosts != null && liveHosts != null && enrolledHosts != null
+                && !savedHosts.has(MATERIAL) && liveHosts.has(MATERIAL)
+                && lacksMaterialHost(baselineCluster)
+                && enrolledHosts.opt(MATERIAL) instanceof String
+                && enrolledHosts.getString(MATERIAL).equals(liveHosts.opt(MATERIAL))) {
+            savedHosts.put(MATERIAL, enrolledHosts.getString(MATERIAL));
+        }
+        return NativeConfig.canonical(expected).equals(NativeConfig.canonical(actual));
+    }
 }

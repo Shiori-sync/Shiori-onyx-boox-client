@@ -1,5 +1,9 @@
 # Firmware observations instead of an allowlist — 2026-10-19
 
+2026-10-22 update: local 0.3.5 lowers minSDK to Android 11/API 30. The
+[China-market Tab 8 and Palma firmware-update qualification](firmware-validation/20261022/README.md)
+records the tested builds; Android 13 statements below describe the dated 0.3.2 checkpoint.
+
 PowerSync 0.3.2 (code 13) removes the model/API/ksync version admission gate.
 The owner explicitly requested that unlisted combinations attempt normal operation:
 we cannot pre-test every hardware and firmware combination. No warning override,

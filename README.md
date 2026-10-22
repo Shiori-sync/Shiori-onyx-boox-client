@@ -5,8 +5,9 @@ Alexandria Server. PowerSync is a separate source dataset from the Alexandria cl
 
 The signed product app is `:client` (`dev.aragonite.powersync.client`). It enrolls
 with an Alexandria native BOOX server, configures stock ksync and restores its
-previous configuration offline. PowerSync 0.3.2 requires Android 13 (API 33) or
-later and attempts the native interfaces on any model/ksync version. Firmware
+previous configuration offline. Local PowerSync 0.3.5 requires Android 11 (API 30)
+or later; the published 0.3.3 requires Android 13. It attempts the native interfaces
+on any model/ksync version. Firmware
 combinations are diagnostic observations, not an allowlist: model, Android API,
 firmware build and ksync version are logged once per observed combination per
 process under `PowerSyncCompatibility`. Actual interface failures, response
@@ -30,6 +31,10 @@ changes paused sync settings. **Enable notebook and reading sync** resumes both
 domains explicitly. Manage connection contains offline return; Troubleshooting
 contains maintenance, audio recovery, and technical details.
 Never uninstall or clear data to work around a signature mismatch.
+On BOOX, keep PowerSync unfrozen in **Settings → Apps & Notifications → Freeze
+Settings**; the Freeze policy can disable it again after `pm enable`. Native
+sync operates independently once configured. See the [Tab 8 Android 11 and Palma
+full-update results](docs/firmware-validation/20261022/README.md).
 
 Version 0.3.3 preserves Library entries even when their book files are not downloaded.
 If a connection stopped after switching servers, **Resume connection** restores

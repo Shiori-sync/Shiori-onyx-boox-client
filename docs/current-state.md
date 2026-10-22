@@ -1,5 +1,23 @@
 # PowerSync implementation state
 
+2026-10-22: **China-market Tab 8 (Android 11/API 30) connected; Palma full firmware
+update preserved native sync.** Local **0.3.5/code 16** lowers minSDK to 30 with a
+bounded HTTP error-read replacement. Tab 8 firmware 4.2 / ksync 32125 passed
+ordinary-UID checks and enrollment, preserved six original book entries and the
+owner's concurrent note deletion, and received 1,126 native note/folder records. Native Library sync reached 144
+book records, including all six originals and both known synthetic book fixtures.
+The first attempt paused correctly on that deletion; normal restore and a fresh
+enrollment completed from the updated state.
+
+Palma upgraded 4.1.1 → 4.2 with the same 0.3.4 APK, account, endpoints (apart from
+the exact enrolled template host newly retained by firmware), flags and marker.
+Native sync was observed before opening PowerSync. BOOX Freeze disabled the
+companion separately. 0.3.5 fixes a false status warning for that narrowly verified
+schema addition; installing it afterward changed no native connection settings.
+Both devices have local 0.3.5. **65 unit tests**, lint (0 errors / 12 existing
+warnings), signed assembly and device read checks pass. Published latest remains
+0.3.3. See [dated evidence](firmware-validation/20261022/README.md).
+
 2026-10-22: **Fresh Palma 2 Pro exposed an older native endpoint schema.** Local
 PowerSync **0.3.4/code 15** permits only the unsupported template-host omission
 when the saved pre-transition native schema proves it is absent. Account/sync
