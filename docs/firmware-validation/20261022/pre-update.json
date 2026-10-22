@@ -1,0 +1,43 @@
+{
+  "verifiedAt": "2026-10-22T05:16:01.127895+00:00",
+  "firmware": {
+    "ro.product.model": "Palma2_Pro_C",
+    "ro.build.display.id": "2025-12-13_09-57_4.1.1-rel_1213_9755ef7ea",
+    "ro.build.fingerprint": "ONYX/TabBoox/TabBoox:13/TKQ1.230615.001/GV2.023.SQ83A:user/release-keys",
+    "ro.build.version.incremental": "77",
+    "ro.build.version.release": "15",
+    "ro.build.version.sdk": "35",
+    "ro.build.version.security_patch": "2025-10-01"
+  },
+  "powerSyncVersion": "0.3.4",
+  "powerSyncVersionCode": 15,
+  "sourceCommit": "ef3be5e",
+  "publishedRelease": false,
+  "installedAPK_SHA256": "70dbd2a1838bccb2edd8c8050af4676d3ab621e3808bd51c9ada87a820a3240b",
+  "installedBytesMatchSignedBuild": true,
+  "nativeKsyncVersion": 32044,
+  "phase": "active",
+  "accountLoggedIn": true,
+  "identityMatches": true,
+  "configurationMatches": true,
+  "allFilesAccess": true,
+  "notebookSyncEnabled": true,
+  "readingSyncEnabled": true,
+  "nativeMarkerPresent": true,
+  "stockFirmwareHostPreserved": true,
+  "readingCatalogRows": 138,
+  "notebookCatalogRows": 0,
+  "syntheticReceipt": {
+    "syntheticBooksPresent": 2,
+    "syntheticMembershipsPresent": 2
+  },
+  "serverEnrollment": {
+    "matchingDevices": 1,
+    "authorized": 1
+  },
+  "signInContinuationRequired": true,
+  "nativeCloudBooksSyncRequested": true,
+  "firmwareUpdateStarted": false,
+  "fullLibraryCompletenessClaimed": false,
+  "diagnosticPackageRemoved": true
+}

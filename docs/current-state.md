@@ -6,8 +6,13 @@ when the saved pre-transition native schema proves it is absent. Account/sync
 endpoint checks remain strict. All 58 unit tests and signed build pass; lint has
 0 errors / 12 existing warnings. Certificate-matched in-place installation and
 normal recovery restore the initial cluster map and empty account/library state.
-Fresh connection awaits a new enrollment code because management SSH is unavailable;
-the user-requested firmware-update experiment has not begun. See
+Fresh enrollment is now active with matching account/configuration and both sync
+flags enabled. Native sign-in required one **Resume connection** after its callback
+timed out. Native Library sync received 138 Reader rows, including two known
+synthetic books and shelf memberships. **4.1.x is known to work on this tested
+4.1.1 build with PowerSync 0.3.4**; this does not qualify every build or full library
+completeness. The pre-update baseline is saved; the owner will initiate firmware
+installation. See
 [baseline, fix, and continuation](firmware-validation/20261022/README.md).
 The latest published release remains 0.3.3.
 

@@ -53,16 +53,35 @@ marker was removed. Recovery did not require the server or manual native writes.
 
 ## Current checkpoint and next observation
 
-Fresh enrollment is pending: SSH to the management host became unreachable when a
-new one-use code was needed. The owner was asked for a code or restored management
-access. The app remains at Connect to Alexandria with its original configuration
-restored. **Do not treat this as a connected pre-update baseline yet.**
+**4.1.x compatibility is confirmed on this tested 4.1.1 build with local
+PowerSync 0.3.4/code 15.** This is observed device evidence, not a claim that every
+4.1.x firmware/model combination has been tested or a firmware allowlist.
 
-Before the owner starts the firmware update, record a successful active connection,
-matching account/configuration, both sync flags, marker and endpoint hashes,
-PowerSync version/signature/permission/package state, and actual native receipt of
-existing synthetic library records. Counts are observation checkpoints, not proof
-of complete resource synchronization.
+After management connectivity returned, fresh enrollment and native sign-in
+succeeded. The native sign-in callback did not complete before the timeout, even
+though the account was already signed in. The existing **Resume connection**
+flow completed without another enrollment or sign-in. This continuation step is
+part of the result, not an uninterrupted first-time-connect pass.
+
+The final [pre-update checkpoint](pre-update.json) confirms:
+
+- Active phase, matching native account identity and installed configuration,
+  All Files Access granted, and both notebook/reading sync flags enabled.
+- Installed APK bytes match the original-certificate-signed local 0.3.4 build.
+- One authorized server enrollment for this fresh device and the native marker
+  present; selected endpoints and account/marker hashes saved privately.
+- The stock firmware-update host remains `https://en-data.boox.com`.
+- After the native Library's **Sync Cloud Books** action, 138 Reader catalog rows
+  arrived, including both existing synthetic folder-check books and their two
+  native shelf memberships. The owner also observed sync arriving.
+- The notebook catalog was still empty at the captured checkpoint; neither full
+  notebook synchronization nor complete source-file downloads are claimed.
+- The disposable read-only diagnostic package was removed. PowerSync remains
+  connected. No firmware update has been started by the agent.
+
+The device is ready for the owner to initiate the firmware update. PowerSync 0.3.4
+and this firmware build are the comparison baseline. Do not upgrade PowerSync at
+the same time, since that would confound the connection-persistence experiment.
 
 After the update, first capture firmware, package state, native account/selection,
 flags, marker and cluster hashes **before opening PowerSync or attempting repair**.
