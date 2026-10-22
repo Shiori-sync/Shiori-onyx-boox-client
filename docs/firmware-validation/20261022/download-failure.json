@@ -1,0 +1,28 @@
+{
+  "observedAt": "2026-10-22T05:19:58.250016+00:00",
+  "stage": "download",
+  "message": "Download failed; check Wi-Fi connection",
+  "updaterError": "SocketTimeoutException",
+  "host": "firmware.boox.com",
+  "port": 80,
+  "connectTimeoutMilliseconds": 3000,
+  "firmwareUnchanged": true,
+  "rebootOccurred": false,
+  "powerSyncOpened": false,
+  "connectionFieldsUnchanged": {
+    "firmware": true,
+    "bootId": true,
+    "clusterSHA256": true,
+    "selectedCluster": true,
+    "syncFlags": true,
+    "accountIdentitySHA256": true,
+    "nativeMarker": true,
+    "installedAPK_SHA256": true,
+    "allFilesAccessAllowed": true
+  },
+  "hostSideProbe": {
+    "tcp80": "connected",
+    "tcp443": "connected",
+    "resolvedAddressesOverlapFailedDeviceAddresses": false
+  }
+}

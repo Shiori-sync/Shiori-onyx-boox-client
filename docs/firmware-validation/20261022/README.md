@@ -83,6 +83,22 @@ The device is ready for the owner to initiate the firmware update. PowerSync 0.3
 and this firmware build are the comparison baseline. Do not upgrade PowerSync at
 the same time, since that would confound the connection-persistence experiment.
 
+### First firmware download attempt
+
+The owner attempted the full update. At 00:18 local time the native updater
+reported **Download failed**. Logs show `SocketTimeoutException` connecting to
+`firmware.boox.com:80`, with repeated 3-second connection timeouts across its
+resolved addresses. The firmware/build and boot ID are unchanged: no reboot or
+completed installation occurred. PowerSync was not opened during diagnosis.
+[Read-only comparison](download-failure.json) confirms account identity, selected
+cluster/endpoints, sync flags, marker, All Files Access, and installed APK bytes
+are unchanged from the pre-update baseline.
+
+A contemporaneous laptop TCP probe reached ports 80 and 443, but resolved a
+different address set from the tablet's failed attempts. This supports a download
+connectivity/CDN-path problem; it does not establish a specific DNS, Wi-Fi, or
+server root cause. The full-update persistence experiment remains pending.
+
 After the update, first capture firmware, package state, native account/selection,
 flags, marker and cluster hashes **before opening PowerSync or attempting repair**.
 Then open PowerSync, record its status, and verify actual native sync. This separates
