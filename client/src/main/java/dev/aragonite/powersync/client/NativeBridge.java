@@ -5,18 +5,29 @@ final class NativeBridge {
  static final String CLUSTER="ONYX_CLUSTER_SYSTEM_KEY",SYSTEM="ONYX_SYSTEM_CONFIG_KEY",SERVICE="com.onyx.android.sdk.sync.ksync.service.ISyncService";
  static final Uri ACCOUNTS=Uri.parse("content://com.onyx.account.database.ContentProvider.KSyncAccountContentProvider/OnyxAccountModel");
  final Context context;NativeBridge(Context c){context=c.getApplicationContext();}
- private static String lastFirmwareObservation;
- private static synchronized void observeFirmware(long ksync) {
-  String observation=NativeCompatibility.describe(Build.MODEL,Build.VERSION.SDK_INT,Build.DISPLAY,ksync);
-  if(!observation.equals(lastFirmwareObservation)) {
-   android.util.Log.i("PowerSyncCompatibility",observation);
-   lastFirmwareObservation=observation;
-  }
+ private static String lastFirmwareObservation,observedApk;
+ private static final ExecutorService APK_HASHER=Executors.newSingleThreadExecutor(r->{Thread t=new Thread(r,"PowerSyncApkHash");t.setDaemon(true);t.setPriority(Thread.MIN_PRIORITY);return t;});
+ /** Hashes each installed ksync build once, off the caller's thread; diagnostics never delay native access. */
+ private static synchronized void observeFirmware(android.content.pm.PackageInfo info) {
+  long ksync=info.getLongVersionCode();String path=info.applicationInfo==null?null:info.applicationInfo.sourceDir;
+  String apk=path+"|"+ksync+"|"+info.lastUpdateTime;
+  if(apk.equals(observedApk))return;
+  observedApk=apk;
+  APK_HASHER.execute(()->{
+   String sha=path==null?NativeCompatibility.UNREADABLE:NativeCompatibility.apkSha256(new File(path));
+   String observation=NativeCompatibility.describe(Build.MODEL,Build.VERSION.SDK_INT,Build.DISPLAY,ksync,sha);
+   synchronized(NativeBridge.class) {
+    if(!observation.equals(lastFirmwareObservation)) {
+     android.util.Log.i("PowerSyncCompatibility",observation);
+     lastFirmwareObservation=observation;
+    }
+   }
+  });
  }
  void requireKsyncAvailable()throws IOException {
   try {
    android.content.pm.PackageInfo info=context.getPackageManager().getPackageInfo("com.onyx.android.ksync",0);
-   observeFirmware(info.getLongVersionCode());
+   observeFirmware(info);
   }catch(android.content.pm.PackageManager.NameNotFoundException e){throw new UserError(R.string.error_native_ksync_is_unavailable);}
  }
  private byte[] call(String... args)throws Exception {requireKsyncAvailable();ArrayList<String> command=new ArrayList<>(Arrays.asList("/system/bin/service","call","onyx_device_service"));command.addAll(Arrays.asList(args));java.lang.Process p=new ProcessBuilder(command).redirectErrorStream(true).start();CompletableFuture<byte[]> output=CompletableFuture.supplyAsync(()->{try(InputStream in=p.getInputStream();ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] b=new byte[4096];int n;while((n=in.read(b))!=-1){if(out.size()+n>1048576)throw new UserError(R.string.error_native_reply_exceeds_limit);out.write(b,0,n);}return out.toByteArray();}catch(IOException e){throw new CompletionException(e);}});if(!p.waitFor(10,TimeUnit.SECONDS)){p.destroyForcibly();throw new UserError(R.string.error_native_service_timed_out);}String raw=new String(output.get(2,TimeUnit.SECONDS),StandardCharsets.UTF_8);ByteArrayOutputStream decoded=new ByteArrayOutputStream();Matcher m=Pattern.compile("(?m)^\\s*0x[0-9a-fA-F]+:\\s*((?:[0-9a-fA-F]{8}(?:\\s+|$)){1,4})").matcher(raw);while(m.find())for(String w:m.group(1).trim().split("\\s+"))decoded.write(ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt((int)Long.parseLong(w,16)).array());if(decoded.size()==0){m=Pattern.compile("Parcel\\(\\s*((?:[0-9a-fA-F]{8}\\s+)+)").matcher(raw);if(m.find())for(String w:m.group(1).trim().split("\\s+"))decoded.write(ByteBuffer.allocate(4).order(ByteOrder.LITTLE_ENDIAN).putInt((int)Long.parseLong(w,16)).array());}byte[] reply=decoded.toByteArray();if(reply.length<8||ByteBuffer.wrap(reply).order(ByteOrder.LITTLE_ENDIAN).getInt()!=0)throw new UserError(R.string.error_native_configuration_access_denied);return reply;}
