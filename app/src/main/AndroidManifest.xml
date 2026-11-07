@@ -5,6 +5,7 @@
   <package android:name="com.onyx.android.ksync" />
   <package android:name="com.onyx.kreader" />
   <provider android:authorities="com.onyx.android.sdk.note.ContentProvider;com.onyx.android.sdk.shape.ContentProvider;com.onyx.android.sdk.sync.KSyncRecordContentProvider" />
+  <provider android:authorities="com.onyx.content.database.ContentProvider" />
  </queries>
  <application android:label="PowerSync Probe" android:allowBackup="false" android:theme="@android:style/Theme.Material.Light.NoActionBar">
   <activity android:name=".MainActivity" android:exported="true">
