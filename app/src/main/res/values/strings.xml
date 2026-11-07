@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Source strings (English). Product names (PowerSync, Alexandria, BOOX, ksync) are never translated. -->
+<!-- Source strings (English). Product names (Shiori, Alexandria, BOOX, ksync) are never translated. -->
 <resources>
-    <string name="app_name" translatable="false">PowerSync</string>
+    <string name="app_name" translatable="false">Shiori</string>
     <string name="hint_server" translatable="false">https://alexandria.example.com</string>
     <string name="audio_label" translatable="false">%1$s — %2$s</string>
     <!-- Screen -->
@@ -26,9 +26,9 @@
     <string name="audio_missing">This recording is not stored locally. Open the notebook and use native Notes sync to download the corrected server copy.</string>
     <string name="audio_mismatch">The local recording does not exactly match the known decoding defect. Nothing changed; review it before attempting recovery.</string>
     <string name="dialog_audio_recover_title">Recover this recording?</string>
-    <string name="dialog_audio_recover_message">Stop any recording and close the notebook first. PowerSync will save a private backup and replace only this verified damaged MP3. Keep Notes closed until recovery finishes.</string>
+    <string name="dialog_audio_recover_message">Stop any recording and close the notebook first. Shiori will save a private backup and replace only this verified damaged MP3. Keep Notes closed until recovery finishes.</string>
     <string name="action_recover">Recover</string>
-    <string name="audio_recovered">Recording recovered and verified against the original bytes. The previous file is retained in PowerSync’s private backup storage. You can reopen the notebook and check playback.</string>
+    <string name="audio_recovered">Recording recovered and verified against the original bytes. The previous file is retained in Shiori’s private backup storage. You can reopen the notebook and check playback.</string>
     <string name="status_working">Working…</string>
     <string name="status_description">Native server: %1$s\nNative account: %2$s\nNotebook sync: %3$s · Reader sync: %4$s\nSetup: %5$s\nPrevious configuration saved: %6$s\nNative editor application: not verified</string>
     <string name="account_signed_in">signed in</string>
@@ -47,7 +47,7 @@
     <string name="error_a_transition_already_exists_use_return_to">A transition already exists; use Return to previous server</string>
     <string name="error_account_cache_changed_before_login_snapshot_preserved">Account cache changed before login; snapshot preserved</string>
     <string name="error_account_cache_changed_during_restoration_snapshot_preserved">Account cache changed during restoration; snapshot preserved</string>
-    <string name="error_account_cache_changed_outside_powersync_snapshot_preserved">Account cache changed outside PowerSync; snapshot preserved</string>
+    <string name="error_account_cache_changed_outside_shiori_snapshot_preserved">Account cache changed outside Shiori; snapshot preserved</string>
     <string name="error_account_cache_restoration_failed_snapshot_preserved">Account cache restoration failed; snapshot preserved</string>
     <string name="error_account_changed_during_restoration_snapshot_preserved">Account changed during restoration; snapshot preserved</string>
     <string name="error_ambiguous_custom_account_cache_snapshot_preserved">Ambiguous custom account cache; snapshot preserved</string>
@@ -60,13 +60,13 @@
     <string name="error_audio_path_changed">Audio path changed</string>
     <string name="error_cached_credentials_changed_before_login_snapshot_preserved">Cached credentials changed before login; snapshot preserved</string>
     <string name="error_cannot_preserve_your_current_boox_account">Cannot preserve your current BOOX account</string>
-    <string name="error_cannot_remove_powersync_marker">Cannot remove PowerSync marker</string>
+    <string name="error_cannot_remove_shiori_marker">Cannot remove Shiori marker</string>
     <string name="error_cluster_switch_unsupported">Cluster switch unsupported</string>
     <string name="error_connect_to_your_enrolled_server_before_recovering">Connect to your enrolled server before recovering audio</string>
     <string name="error_connect_to_your_enrolled_server_before_updating">Connect to your enrolled server before updating its endpoints</string>
     <string name="error_custom_account_changed_during_removal_snapshot_preserved">Custom account changed during removal; snapshot preserved</string>
-    <string name="error_custom_endpoint_changed_outside_powersync_inspect_before">Custom endpoint changed outside PowerSync; inspect before restoration</string>
-    <string name="error_custom_endpoint_changed_outside_powersync_inspect_before_2">Custom endpoint changed outside PowerSync; inspect before updating</string>
+    <string name="error_custom_endpoint_changed_outside_shiori_inspect_before">Custom endpoint changed outside Shiori; inspect before restoration</string>
+    <string name="error_custom_endpoint_changed_outside_shiori_inspect_before_2">Custom endpoint changed outside Shiori; inspect before updating</string>
     <string name="error_duplicate_cached_account_row_id">Duplicate cached account row ID</string>
     <string name="error_empty_account_callback">Empty account callback</string>
     <string name="error_empty_native_cluster_callback">Empty native cluster callback</string>
@@ -110,8 +110,8 @@
     <string name="error_native_library_changed_during_transition_synchronization_remains">Native library changed during transition; synchronization remains paused</string>
     <string name="error_native_library_unavailable">Native library unavailable</string>
     <string name="error_native_login_unsupported">Native login unsupported</string>
-    <string name="error_native_marker_changed_outside_powersync_inspect_before">Native marker changed outside PowerSync; inspect before updating</string>
-    <string name="error_native_marker_changed_outside_powersync_preserve_it">Native marker changed outside PowerSync; preserve it before restoration</string>
+    <string name="error_native_marker_changed_outside_shiori_inspect_before">Native marker changed outside Shiori; inspect before updating</string>
+    <string name="error_native_marker_changed_outside_shiori_preserve_it">Native marker changed outside Shiori; preserve it before restoration</string>
     <string name="error_native_refresh_did_not_keep_the_updated">Native refresh did not keep the updated endpoints</string>
     <string name="error_native_refresh_replaced_the_enrolled_endpoints">Native refresh replaced the enrolled endpoints</string>
     <string name="error_native_refresh_selected_another_server">Native refresh selected another server</string>
@@ -123,7 +123,7 @@
     <string name="error_native_service_disconnected">Native service disconnected</string>
     <string name="error_native_service_timed_out">Native service timed out</string>
     <string name="error_no_saved_previous_configuration">No saved previous configuration</string>
-    <string name="error_original_account_row_changed_outside_powersync_snapshot">Original account row changed outside PowerSync; snapshot preserved</string>
+    <string name="error_original_account_row_changed_outside_shiori_snapshot">Original account row changed outside Shiori; snapshot preserved</string>
     <string name="error_original_account_row_id_is_occupied_snapshot">Original account row ID is occupied; snapshot preserved</string>
     <string name="error_original_catalog_id_unavailable_for_repair">Original catalog ID unavailable for repair</string>
     <string name="error_other_cached_accounts_still_need_restoration_snapshot">Other cached accounts still need restoration; snapshot preserved</string>
@@ -186,7 +186,7 @@
     <string name="attention_heading">Connection needs attention</string>
     <string name="heading_server">%1$s\n%2$s</string>
     <string name="back_home">Back to connection</string>
-    <string name="setup_explanation">Connect BOOX Notes and reading sync to your Alexandria server. PowerSync saves your previous settings before switching.</string>
+    <string name="setup_explanation">Connect BOOX Notes and reading sync to your Alexandria server. Shiori saves your previous settings before switching.</string>
     <string name="continue_setup">Continue connecting</string>
     <string name="change_details">Use different connection details</string>
     <string name="server_label">Server address</string>
@@ -201,16 +201,16 @@
     <string name="update_available">Server configuration update available</string>
     <string name="manage_connection">Manage connection</string>
     <string name="endpoint_interrupted">A server configuration update was interrupted. Keep the saved settings and use Troubleshooting to review recovery before enabling sync.</string>
-    <string name="attention_explanation">PowerSync cannot confirm this connection. Refresh the status or review Troubleshooting. If a previous configuration was saved, you can restore it here.</string>
+    <string name="attention_explanation">Shiori cannot confirm this connection. Refresh the status or review Troubleshooting. If a previous configuration was saved, you can restore it here.</string>
     <string name="troubleshooting">Troubleshooting</string>
-    <string name="manage_explanation">Return to the saved previous server without contacting Alexandria. PowerSync restores its saved settings; BOOX sign-in may still be needed.</string>
+    <string name="manage_explanation">Return to the saved previous server without contacting Alexandria. Shiori restores its saved settings; BOOX sign-in may still be needed.</string>
     <string name="technical_details">Technical details</string>
     <string name="check_updates">Check for configuration updates</string>
     <string name="sync_on">enabled</string>
     <string name="sync_paused">paused</string>
     <string name="open_browser_failed">Could not open Alexandria. Open the server address in your browser.</string>
-    <string name="confirm_connection">Connect to %1$s?\n\nPowerSync will save your previous configuration, switch servers, and enable notebook and reading sync. Existing notes stay on this device, and individually excluded notebooks and books stay excluded.</string>
-    <string name="update_confirmation">Update the connection settings published by your server? PowerSync will briefly pause sync, verify the new settings, and restore your current sync preferences. Your account stays signed in. Restart the tablet after a successful update so all BOOX apps use the new settings.</string>
+    <string name="confirm_connection">Connect to %1$s?\n\nShiori will save your previous configuration, switch servers, and enable notebook and reading sync. Existing notes stay on this device, and individually excluded notebooks and books stay excluded.</string>
+    <string name="update_confirmation">Update the connection settings published by your server? Shiori will briefly pause sync, verify the new settings, and restore your current sync preferences. Your account stays signed in. Restart the tablet after a successful update so all BOOX apps use the new settings.</string>
     <string name="error_catalog_identity_conflict">Library entries have conflicting identities; the saved catalog has been preserved.</string>
     <string name="resume_connection">Resume connection</string>
     <string name="resume_connection_explanation">Continue your saved connection and restore Library entries. Books do not need to be downloaded.</string>

@@ -100,11 +100,11 @@ object AccountCacheRecovery {
             if (old != null) {
                 if (!onlyLogoutChanged(row, old))
                     throw UserError(
-                        R.string.error_original_account_row_changed_outside_powersync_snapshot
+                        R.string.error_original_account_row_changed_outside_shiori_snapshot
                     )
             } else if (affected(row, uid) || row["uid"] in savedUIDs)
                 throw UserError(
-                    R.string.error_account_cache_changed_outside_powersync_snapshot_preserved
+                    R.string.error_account_cache_changed_outside_shiori_snapshot_preserved
                 )
         }
         if (owned.size > 1)

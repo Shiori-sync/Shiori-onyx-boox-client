@@ -13,7 +13,7 @@ The probe returned BLIP errors for every replication request; it neither served
 nor persisted document revisions.
 
 This removes endpoint selection as a blocker. A Couchbase endpoint alone still
-does not establish a working independent native sync service. PowerSync's
+does not establish a working independent native sync service. Shiori's
 adapter architecture remains unchanged pending the account/note/asset phase.
 
 ## Device preservation and teardown
@@ -104,7 +104,7 @@ is not included in the Android app. No Sync Gateway or Couchbase Server was
 deployed in this spike.
 
 `scripts/read-cluster-config.py` supports the captured Palma ABI and stages
-bounded host observations in PowerSync's own private directory. Its restore
+bounded host observations in Shiori's own private directory. Its restore
 option requires native switch-back first, then verifies the saved JSON exactly.
 Debug app actions: `cluster_baseline`, `cluster_update`, `cluster_switch`,
 `cluster_restore`, `cluster_snapshot`. The baseline is durable and not overwritten

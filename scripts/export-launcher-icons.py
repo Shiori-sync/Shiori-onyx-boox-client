@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export the approved PowerSync artwork to Android resources (requires Pillow)."""
+"""Export the approved Shiori artwork to Android resources (requires Pillow)."""
 
 from pathlib import Path
 import shutil
@@ -9,7 +9,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "design/icons/powersync-aragonite-sync-v2.png"
-RES = ROOT / "client/src/main/res"
+RES = ROOT / "app/src/main/res"
 
 
 def main():
@@ -19,7 +19,7 @@ def main():
         if source.getchannel("A").getextrema()[0] != 0:
             raise ValueError("Launcher source must have a transparent background")
 
-        shutil.copyfile(SOURCE, RES / "drawable-nodpi/powersync_aragonite.png")
+        shutil.copyfile(SOURCE, RES / "drawable-nodpi/shiori_aragonite.png")
         # Adaptive/themed launchers use the full source through the existing inset.
         # Legacy launchers need a white background and density-specific dimensions.
         for density, size in (("mdpi", 48), ("hdpi", 72), ("xhdpi", 96),

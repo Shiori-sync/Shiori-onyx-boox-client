@@ -287,7 +287,7 @@ class TransitionController(context: Context) {
                 bytes == null ||
                 installedMarker.getString("sha256") != hash(bytes)
         )
-            throw UserError(R.string.error_native_marker_changed_outside_powersync_preserve_it)
+            throw UserError(R.string.error_native_marker_changed_outside_shiori_preserve_it)
         try {
             nativeIO.flags(pausedFlags())
             finishConnection(before, profile, journal)
@@ -342,7 +342,7 @@ class TransitionController(context: Context) {
         journal.put("previouslyLocalBooksUnavailable", missing)
         if (missing > 0)
             Log.w(
-                "PowerSyncCompatibility",
+                "ShioriCompatibility",
                 "Previously local book files unavailable: $missing; catalog metadata preserved",
             )
         phase(journal, "authenticated")
@@ -402,7 +402,7 @@ class TransitionController(context: Context) {
                     entry,
                 )
         )
-            throw UserError(R.string.error_custom_endpoint_changed_outside_powersync_inspect_before)
+            throw UserError(R.string.error_custom_endpoint_changed_outside_shiori_inspect_before)
         val installedMarker = state.read("installed-marker")
         if (installedMarker != null) {
             val currentMarker = if (marker().isFile) Files.readAllBytes(marker().toPath()) else null
@@ -413,7 +413,7 @@ class TransitionController(context: Context) {
             val ownedMarker =
                 currentMarker != null && installedMarker.getString("sha256") == hash(currentMarker)
             if (!originalMarker && !ownedMarker)
-                throw UserError(R.string.error_native_marker_changed_outside_powersync_preserve_it)
+                throw UserError(R.string.error_native_marker_changed_outside_shiori_preserve_it)
         }
         phase(journal, "restore_requested")
         nativeIO.flags(pausedFlags())
@@ -436,7 +436,7 @@ class TransitionController(context: Context) {
             if (before.isNull("marker")) {
                 AtomicFile(marker()).delete()
                 if (marker().exists())
-                    throw UserError(R.string.error_cannot_remove_powersync_marker)
+                    throw UserError(R.string.error_cannot_remove_shiori_marker)
             } else writeMarker(Base64.decode(before.getString("marker"), Base64.DEFAULT))
         }
         nativeIO.repairMissingCatalog(before.getJSONArray("catalog"))
@@ -487,7 +487,7 @@ class TransitionController(context: Context) {
         val entry = live.getJSONObject("clusterMap").optJSONObject(id)
         if (!installedEntryMatches(state.read("installed-cluster"), entry))
             throw UserError(
-                R.string.error_custom_endpoint_changed_outside_powersync_inspect_before_2
+                R.string.error_custom_endpoint_changed_outside_shiori_inspect_before_2
             )
         val reply =
             ServerClient.request(
@@ -537,7 +537,7 @@ class TransitionController(context: Context) {
             throw UserError(R.string.error_native_server_marker_is_missing_or_too)
         val installedMarker = state.read("installed-marker")
         if (installedMarker == null || installedMarker.getString("sha256") != hash(markerBytes))
-            throw UserError(R.string.error_native_marker_changed_outside_powersync_inspect_before)
+            throw UserError(R.string.error_native_marker_changed_outside_shiori_inspect_before)
         val nextMarker = EndpointProfile.replaceMarker(markerBytes, profile)
         val flags = nativeIO.flags()
         val journal =

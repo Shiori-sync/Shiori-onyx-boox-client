@@ -1,6 +1,6 @@
-# PowerSync application design
+# Shiori application design
 
-Updated 2026-10-18 for PowerSync 0.3.0. Companion to [Alexandria's native BOOX integration](../../AragoniteAlexandriaServer/docs/boox-native-integration-design.md).
+Updated 2026-10-18 for Shiori 0.3.0. Companion to [Alexandria's native BOOX integration](../../AragoniteAlexandriaServer/docs/boox-native-integration-design.md).
 
 ## Product boundary
 

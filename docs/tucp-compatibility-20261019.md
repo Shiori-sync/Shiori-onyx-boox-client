@@ -5,7 +5,7 @@
 
 ## Installation
 
-PowerSync 0.3.1 (code 12) lowers minSdk from 35 to 33, keeping compile/target
+Shiori 0.3.1 (code 12) lowers minSdk from 35 to 33, keeping compile/target
 SDK 35. The native compatibility policy separately pins model, Android API and
 ksync version: Palma2_Pro_C/35/32173, Go103_2Lumi/35/32079,
 TabUltraCPro/33/32174. Unknown combinations remain blocked; login and cluster

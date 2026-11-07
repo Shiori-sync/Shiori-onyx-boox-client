@@ -128,11 +128,11 @@ uninstall was performed.
 ## Architecture decision
 
 This evidence makes native retargeting a real candidate, while the approved
-account-independent PowerSync adapter remains a separate fallback. A hosted native
+account-independent Shiori adapter remains a separate fallback. A hosted native
 route would use Couchbase Server + Gateway, a thin Onyx account/session service,
 and either a qualified OSS-compatible store or a narrow file adapter. No need to
 implement Couchbase replication ourselves. A private API over Gateway can serve
-our own clients, but PowerSync/Rhizome receipt semantics are not implemented by
+our own clients, but Shiori/Rhizome receipt semantics are not implemented by
 this experiment.
 
 Next gates: native content application, automatic scheduling, concurrent/offline

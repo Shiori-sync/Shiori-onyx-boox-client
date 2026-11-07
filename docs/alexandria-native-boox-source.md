@@ -181,7 +181,7 @@ pair failures below are historical observations, not the current coordinated res
 
 User direction, recorded 2026-10-06: build a deployment plan for native BOOX
 Couchbase synchronization as a **notebook and reading sync source in Alexandria
-Server**. Native ksync retargeting is an intended integration route. PowerSync
+Server**. Native ksync retargeting is an intended integration route. Shiori
 owns device/protocol qualification and any small device-side setup/wakeup adapter.
 
 Alexandria Server's present `internal/source/syncmodel.go` describes `boox` as
@@ -349,9 +349,9 @@ separately; complete losing-intent capture remains an integration design gate.
 
 ## Trusted native HTTPS/WSS and single-owner scope, 2026-10-07
 
-PowerSync now qualifies stock native HTTPS login, WSS replication, signed
+Shiori now qualifies stock native HTTPS login, WSS replication, signed
 notebook upload/download and exact marker-bearing receiver assets with visible
-native editor application on both devices. See [TLS evidence](../../AragonitePowerSync/docs/native-tls-tunnel.md).
+native editor application on both devices. See [TLS evidence](native-tls-tunnel.md).
 TLS terminates at the temporary Cloudflare edge; negative certificate/name and
 origin TLS controls remain unqualified. The native OSS CNAME addressing style
 requires compatible bucket-path normalization before signature verification.
@@ -361,7 +361,7 @@ revocation remain individually scoped; broader Hosting isolation is unchanged.
 
 ## Pending-work restart recovery, 2026-10-07
 
-[PowerSync server restart evidence](../../AragonitePowerSync/docs/native-server-restart.md)
+[Shiori server restart evidence](native-server-restart.md)
 confirms exact stored assets and stable device sessions survive backend restart.
 A supervised repeat shows a 91-second healthy window without pending commit
 publication; explicit retries do not establish complete recovery. After explicit
@@ -374,7 +374,7 @@ graceful single-node backend restart, not power-loss/failover qualification.
 
 ## Explicit text recovery, 2026-10-07
 
-[App-assisted native recovery](../../AragonitePowerSync/docs/native-richtext-recovery.md)
+[App-assisted native recovery](native-richtext-recovery.md)
 restored the exact retained interrupted text under the same notebook/page/shape
 identity on Lumi. A subsequent native edit published through stock ksync and
 rendered on Palma; both cold reopens retained the recovered text and edit.
@@ -392,7 +392,7 @@ edits: retain the chosen native winner policy and expose recovery as a new edit.
 
 ## Server-created recovery continuation, 2026-10-07
 
-[Three server-only text publication rounds](../../AragonitePowerSync/docs/native-server-richtext-recovery.md)
+[Three server-only text publication rounds](native-server-richtext-recovery.md)
 produce fresh asset download and cold rendering on Lumi without a helper import.
 Palma remains older, including after cookie renewal and accepted BLIP transport.
 A second-round marker also leaves active state during the native continuation.
@@ -406,7 +406,7 @@ session renewal and production recovery API/UI remain open.
 
 ## Palma exact receipt and isolated recovery, 2026-10-07
 
-[Native parent-history and application evidence](../../AragonitePowerSync/docs/native-palma-commit-receipt.md)
+[Native parent-history and application evidence](native-palma-commit-receipt.md)
 proves Palma uses the exact host-written commit and MESSAGE revisions as parents
 of native child revisions. With Lumi sync paused, two server-created recovery
 rounds download all four exact assets and retain normalized text/style under the

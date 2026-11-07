@@ -26,7 +26,7 @@ class NativeInkTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 ink.make(report, path/'bad.zip', foreign)
             subprocess.run(['javac', '-d', temp,
-                            str(ROOT/'app/src/main/java/dev/aragonite/powersync/NativeInk.java'),
+                            str(ROOT/'diagnostics/src/main/java/dev/aragonite/powersync/NativeInk.java'),
                             str(ROOT/'tests/NativeInkTest.java')], check=True)
             subprocess.run(['java', '-cp', temp, 'dev.aragonite.powersync.NativeInkTest',
                             str(path/'v1.zip'), str(path/'v2.zip'),

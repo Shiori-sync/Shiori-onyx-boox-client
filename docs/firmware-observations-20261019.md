@@ -4,7 +4,7 @@
 [China-market Tab 8 and Palma firmware-update qualification](firmware-validation/20261022/README.md)
 records the tested builds; Android 13 statements below describe the dated 0.3.2 checkpoint.
 
-PowerSync 0.3.2 (code 13) removes the model/API/ksync version admission gate.
+Shiori 0.3.2 (code 13) removes the model/API/ksync version admission gate.
 The owner explicitly requested that unlisted combinations attempt normal operation:
 we cannot pre-test every hardware and firmware combination. No warning override,
 extra confirmation, or per-device exception is required. Android API 33 remains

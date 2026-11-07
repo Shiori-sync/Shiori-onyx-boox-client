@@ -1,4 +1,4 @@
-# PowerSync icon
+# Shiori icon
 
 The approved amber aragonite and teal sync-arrow artwork is the product icon for
 `dev.aragonite.powersync.client`. The diagnostic probe keeps its existing identity.

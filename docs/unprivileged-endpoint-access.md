@@ -1,6 +1,6 @@
 # Ordinary-app endpoint configuration probe
 
-On 2026-10-06, the installed PowerSync debug app successfully read and wrote
+On 2026-10-06, the installed Shiori debug app successfully read and wrote
 `ONYX_CLUSTER_SYSTEM_KEY` on both Go 10.3 II and Palma 2 Pro. This closes the
 previously untested configuration-write boundary in the retargeting experiment.
 

@@ -2,14 +2,14 @@
 
 2026-10-09: implemented, deployed and qualified for the bounded checks below.
 
-A new user expects connecting PowerSync to populate Alexandria with their eligible
+A new user expects connecting Shiori to populate Alexandria with their eligible
 existing notebooks and reading data. The device should retain native record IDs
 and ownership. Connecting must not silently create a different BOOX owner and
 then require hand-migrating all existing records.
 
 ## Identity and authentication
 
-PowerSync supplies the active native account UID when redeeming an owner-issued,
+Shiori supplies the active native account UID when redeeming an owner-issued,
 one-use enrollment code. Alexandria binds its native namespace on the first
 successful enrollment, transactionally with code consumption. Later devices must
 supply the same UID, or omit it when signed out. A mismatching UID is rejected
@@ -30,7 +30,7 @@ The pulled ksync `LocalAccountProvider.logIn` deletes an old account by UID **or
 numeric accountId, independently of cluster. Preserving the UID therefore requires
 preserving the original cached credentials, not merely saving endpoint settings.
 
-PowerSync 0.1.2 captures the potentially replaced account row into its existing
+Shiori 0.1.2 captures the potentially replaced account row into its existing
 AES-GCM/Android Keystore state before any endpoint mutation. It refuses ambiguous
 rows or a conflicting numeric account ID. Account snapshots are not exported or
 sent to Alexandria; application backup is disabled. On return, synchronization
@@ -170,7 +170,7 @@ reads each currently referenced distinct body, emitting a JSON summary. Exit is
 nonzero on failure; it does not mutate storage. `-fetch-hash` writes verified
 binary bytes to stdout, so redirect to a private file. Missing, truncated,
 overlong, changed and failed-close negative controls are covered by tests.
-PowerSync's `scripts/audit-enrollment-resources.py` compares a native ZIP to a
+Shiori's `scripts/audit-enrollment-resources.py` compares a native ZIP to a
 private server manifest; it is complementary and does not itself read S3.
 
 These checks establish automatic initial publication, metadata coverage,
@@ -267,7 +267,7 @@ Private snapshots and aggregate receipts: `artifacts/two-device-prod-20261009/`.
 The user deleted four items on Palma. Two subsequent native-provider samples
 show all four status transitions 1→0 and no other projected field changes; the
 Lumi provider remains unchanged. Two server projection samples show one of the
-four (an original-owner PowerSync ink fixture) arriving as status 0 at 07:30:16
+four (an original-owner Shiori ink fixture) arriving as status 0 at 07:30:16
 UTC. The other three remain at their earlier active revisions. All four have
 the same original owner and noteSyncStatus=1; neither account ownership nor the
 per-note enable flag explains this split. This is native soft deletion, not a

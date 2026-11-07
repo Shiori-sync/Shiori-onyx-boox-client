@@ -8,12 +8,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: powersync-release-${{ github.ref }}
+  group: shiori-release-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   release:
-    if: github.repository == 'jdkruzr/AragonitePowerSync' && github.ref == 'refs/heads/main'
+    if: github.repository == 'Shiori-sync/Shiori-onyx-boox-client' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
@@ -38,7 +38,7 @@ jobs:
         run: sdkmanager 'platforms;android-35' 'build-tools;34.0.0' 'build-tools;35.0.0'
 
       - name: Test and lint release variant
-        run: ./gradlew --no-daemon --no-configuration-cache :client:testReleaseUnitTest :client:lintRelease
+        run: ./gradlew --no-daemon --no-configuration-cache :app:testReleaseUnitTest :app:lintRelease
 
       - name: Restore release signing configuration
         env:
@@ -53,7 +53,7 @@ jobs:
           names = ('RELEASE_KEYSTORE_BASE64', 'RELEASE_KEYSTORE_PASSWORD', 'RELEASE_KEY_ALIAS', 'RELEASE_KEY_PASSWORD')
           if any(not os.environ.get(name) for name in names):
               raise SystemExit('Release signing secrets are incomplete.')
-          keystore = pathlib.Path(os.environ['RUNNER_TEMP']) / 'powersync-release.jks'
+          keystore = pathlib.Path(os.environ['RUNNER_TEMP']) / 'shiori-release.jks'
           keystore.write_bytes(base64.b64decode(os.environ['RELEASE_KEYSTORE_BASE64'], validate=True))
           config = pathlib.Path.home() / '.local/share/aragonite-powersync/signing/client.properties'
           config.parent.mkdir(parents=True, exist_ok=True)
@@ -75,34 +75,34 @@ jobs:
           config.write_text(''.join(key + '=' + escape(value) + '\n' for key, value in values.items()), encoding='ascii')
 
       - name: Build signed release APK
-        run: ./gradlew --no-daemon --no-configuration-cache :client:assembleRelease
+        run: ./gradlew --no-daemon --no-configuration-cache :app:assembleRelease
 
       - name: Verify signing identity and package artifact
         env:
           EXPECTED_CERT_SHA256: f61b114923bef983aa12e876ea12bbc52f017363ef7103a96c2f978dc19aeb35
         run: |
           set -euo pipefail
-          apk=client/build/outputs/apk/release/client-release.apk
+          apk=app/build/outputs/apk/release/app-release.apk
           signer="$ANDROID_HOME/build-tools/35.0.0/apksigner"
-          "$signer" verify --verbose --print-certs "$apk" > "$RUNNER_TEMP/powersync-certificate.txt"
-          actual=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' "$RUNNER_TEMP/powersync-certificate.txt")
+          "$signer" verify --verbose --print-certs "$apk" > "$RUNNER_TEMP/shiori-certificate.txt"
+          actual=$(sed -n 's/^Signer #1 certificate SHA-256 digest: //p' "$RUNNER_TEMP/shiori-certificate.txt")
           test "$actual" = "$EXPECTED_CERT_SHA256"
           mkdir -p dist
-          cp "$apk" dist/PowerSync-release.apk
-          cp "$RUNNER_TEMP/powersync-certificate.txt" dist/signing-certificate.txt
+          cp "$apk" dist/Shiori-release.apk
+          cp "$RUNNER_TEMP/shiori-certificate.txt" dist/signing-certificate.txt
           printf '%s\n' "$GITHUB_SHA" > dist/source-commit.txt
-          (cd dist && sha256sum PowerSync-release.apk > SHA256SUMS)
+          (cd dist && sha256sum Shiori-release.apk > SHA256SUMS)
 
       - name: Remove signing material
         if: always()
         run: |
-          rm -f "$RUNNER_TEMP/powersync-release.jks"
+          rm -f "$RUNNER_TEMP/shiori-release.jks"
           rm -f "$HOME/.local/share/aragonite-powersync/signing/client.properties"
 
       - name: Upload signed APK
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: powersync-release-${{ github.run_number }}
+          name: shiori-release-${{ github.run_number }}
           path: dist/
           if-no-files-found: error
           retention-days: 30
@@ -111,9 +111,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: powersync-checks-${{ github.run_number }}
+          name: shiori-checks-${{ github.run_number }}
           path: |
-            client/build/test-results/testReleaseUnitTest/TEST-*.xml
-            client/build/reports/lint-results-release.*
+            app/build/test-results/testReleaseUnitTest/TEST-*.xml
+            app/build/reports/lint-results-release.*
           if-no-files-found: warn
           retention-days: 14

@@ -210,7 +210,7 @@ recipes are sealed with SHA256SUMS in `artifacts/prod-sync-diagnosis-20261009/`.
 Local synthetic Gateway/Couchbase fixtures were stopped after the tests; their
 volumes and all production data services remain intact.
 
-Release provenance: this repair is included in the PowerSync implementation and
+Release provenance: this repair is included in the Shiori implementation and
 Alexandria Server native-BOOX commits. Future releases must include the server
 source changes and migrations 0017–0019; an unrelated branch or previously
 published image does not acquire these fixes automatically. Private device

@@ -20,7 +20,7 @@ old immutable assets are not rewritten. Shape field 14 and the resource PB both
 reference the fresh HTML. This four-entry closed payload includes the resource,
 its PB metadata, points and shape ZIP.
 
-The ordinary-UID [native recovery handler](../app/src/main/java/dev/aragonite/powersync/NativeRichTextRecoveryLab.java)
+The ordinary-UID [native recovery handler](../diagnostics/src/main/java/dev/aragonite/powersync/NativeRichTextRecoveryLab.kt)
 requires the owned live lab fixture, selected notebook, paused note sync, one
 mapped rich-text page, matching shape/resource references and body/payload SHA-256.
 It compares the current referenced resource ID and active body SHA-256 to the

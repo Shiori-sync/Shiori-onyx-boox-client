@@ -14,8 +14,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "AragonitePowerSync"
+rootProject.name = "Shiori"
 
 include(":app")
 
-include(":client")
+include(":diagnostics")

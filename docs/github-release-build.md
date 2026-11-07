@@ -3,11 +3,11 @@
 Run **Actions → Release build → Run workflow** on `main`, or:
 
 ```sh
-gh workflow run release.yml --repo jdkruzr/AragonitePowerSync --ref main
+gh workflow run release.yml --repo Shiori-sync/Shiori-onyx-boox-client --ref main
 ```
 
 This manually dispatched workflow tests and lints the release variant, builds
-PowerSync's signed `:client` APK with Java 17 / Android SDK 35, and verifies the
+Shiori's signed `:app` APK with Java 17 / Android SDK 35, and verifies the
 existing signing certificate before uploading it. Actions are pinned to commit
 hashes. Signing runs only on this repository's `main`, with a read-only token;
 there is no pull-request trigger and no automatic GitHub Release publication.
@@ -35,7 +35,7 @@ applies to version 0.3.1.
 
 ## Published releases
 
-The latest published version is [PowerSync 0.3.3](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.3),
+The latest published version is [Shiori 0.3.3](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.3),
 using the unchanged signed APK from [run #3](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39464804296).
 It removes firmware allowlists and fixes cloud-only Library recovery. The public
 APK, source commit, package identity and signing certificate were verified;
@@ -44,7 +44,7 @@ reconciliation issue remains documented in its release notes.
 
 A successful Actions run creates build artifacts; publishing them to the
 repository's Releases page is a separate step. The first published release is
-[PowerSync 0.3.1](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.1),
+[Shiori 0.3.1](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.1),
 using the signed APK from [run #2](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39224617064).
 
 For publication, download the successful run's artifact, verify its checksum,

@@ -1,6 +1,6 @@
-# PowerSync project instructions
+# Shiori project instructions
 
-Read docs/current-state.md before continuing. PowerSync is a separate Android source
+Read docs/current-state.md before continuing. Shiori is a separate Android source
 and sync domain from Alexandria's client, using Alexandria Server and Rhizome.
 V1 requires unrooted/account-independent access, Onyx cloud sync disabled, and
 same-notebook editable write-back. Do not call metadata capture a full snapshot.

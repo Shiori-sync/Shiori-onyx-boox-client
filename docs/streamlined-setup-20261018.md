@@ -1,4 +1,4 @@
-# PowerSync 0.3.0: streamlined setup and connection status
+# Shiori 0.3.0: streamlined setup and connection status
 
 2026-10-18. Implementation branch: `feature/powersync-streamlined-setup`.
 Release: version 0.3.0, version code 11, existing signing identity and package.
@@ -43,7 +43,7 @@ branch are unchanged. See the Server companion branch's
 Commands (JDK 17 for Android):
 
 ```sh
-./gradlew :client:testReleaseUnitTest :client:lintRelease :client:assembleRelease
+./gradlew :app:testReleaseUnitTest :app:lintRelease :app:assembleRelease
 go test -count=1 ./internal/alexandria/web ./internal/boox -run 'TestCatalogsCoverEveryMessage|TestBOOXViewsRender|TestTemplateHubPageIsAnonymousAndScriptless'
 ```
 

@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import java.util.concurrent.Executors
 import org.json.JSONObject
 
-/** Disposable-fixture lab, kept separate from the PowerSync client application. */
+/** Disposable-fixture lab, kept separate from the Shiori client application. */
 class MainActivity : ComponentActivity() {
     private val worker = Executors.newSingleThreadExecutor()
     private var output by mutableStateOf("Ready. No lab action is running in this window.")
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
                         verticalArrangement = Arrangement.spacedBy(12.dp),
                     ) {
                         Text(
-                            "PowerSync — native adapter lab",
+                            "Shiori Diagnostics",
                             style = MaterialTheme.typography.headlineSmall,
                         )
                         Text(

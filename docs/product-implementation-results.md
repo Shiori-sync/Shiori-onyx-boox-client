@@ -1,6 +1,6 @@
 # Product implementation and lab restoration
 
-2026-10-08. No production rollout. The original PowerSync lab is stopped and its
+2026-10-08. No production rollout. The original Shiori lab is stopped and its
 volumes/evidence retained. Product qualification uses separate disposable
 Couchbase containers, fresh PostgreSQL libraries, the test S3 namespace, and a
 temporary TLS tunnel. Both native sync flags stay disabled during product setup.
@@ -29,7 +29,7 @@ with SHA256SUMS. Proxy/facade and original CB/SG services are stopped; volumes k
 
 ## Product and server
 
-The signed `:client` module is `dev.aragonite.powersync.client`. It installs beside
+The signed `:app` module is `dev.aragonite.powersync.client`. It installs beside
 the old probe, preserving probe data. Persistent signing key lives outside the
 repo at `~/.local/share/aragonite-powersync/signing/`. Private state uses Android
 Keystore AES-GCM and atomic writes. Baselines include exact marker content,

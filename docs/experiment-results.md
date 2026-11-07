@@ -324,7 +324,7 @@ IDs return zero models, library scope plus restart delivers exact new revisions,
 and moving the records back to book scope returns retained old library models.
 The earlier Lumi “book-scope success” was cached READER_LIBRARY data with original
 timestamps. Native bookmark/progress application remains valid; its scope
-attribution is corrected in both PowerSync and Server handoffs. Full original
+attribution is corrected in both Shiori and Server handoffs. Full original
 metadata rows unchanged (28/14), account/endpoint/flag and notebook guards pass,
 EPUB escrow restored, lab policy/logging restored and services stopped. Evidence:
 `artifacts/gateway-lab/qualification/reader-scope-pair/`.

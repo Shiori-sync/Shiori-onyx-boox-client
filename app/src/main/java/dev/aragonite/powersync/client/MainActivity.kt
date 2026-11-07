@@ -25,17 +25,17 @@ import androidx.compose.ui.unit.dp
 import org.json.JSONArray
 
 /** Compose observes process-owned work; recomposition never starts native operations. */
-class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
-    private lateinit var coordinator: PowerSyncCoordinator
+class MainActivity : ComponentActivity(), ShioriCoordinator.Observer {
+    private lateinit var coordinator: ShioriCoordinator
     private var revision by mutableIntStateOf(0)
     private var page by mutableStateOf("home")
     private var awaitingPermission = false
     private var foreground = false
-    private var prompt by mutableStateOf<PowerSyncCoordinator.Prompt?>(null)
+    private var prompt by mutableStateOf<ShioriCoordinator.Prompt?>(null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        coordinator = PowerSyncCoordinator.get(this)
+        coordinator = ShioriCoordinator.get(this)
         page = savedInstanceState?.getString("page", "home") ?: "home"
         awaitingPermission = savedInstanceState?.getBoolean("permission") ?: false
         setContent {
@@ -98,7 +98,7 @@ class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
         changed()
     }
 
-    private fun showPrompt(value: PowerSyncCoordinator.Prompt) {
+    private fun showPrompt(value: ShioriCoordinator.Prompt) {
         if (value.kind == "permission") requestAccess() else prompt = value
     }
 
@@ -209,7 +209,7 @@ class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
                 Action(R.string.open_alexandria) { openServer(state.server) }
                 if (coordinator.endpointChanges > 0)
                     Action(R.string.update_available) {
-                        showPrompt(PowerSyncCoordinator.Prompt("endpoints", null))
+                        showPrompt(ShioriCoordinator.Prompt("endpoints", null))
                     }
                 Action(R.string.manage_connection) { navigate("manage") }
             }
@@ -277,7 +277,7 @@ class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
 
     @Composable
     private fun RestoreAction() {
-        Action(R.string.button_return) { showPrompt(PowerSyncCoordinator.Prompt("restore", null)) }
+        Action(R.string.button_return) { showPrompt(ShioriCoordinator.Prompt("restore", null)) }
     }
 
     @Composable
@@ -299,7 +299,7 @@ class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
                 if (coordinator.endpointError.isNotEmpty()) Text(coordinator.endpointError)
                 if (coordinator.endpointChanges > 0)
                     Action(R.string.update_available) {
-                        showPrompt(PowerSyncCoordinator.Prompt("endpoints", null))
+                        showPrompt(ShioriCoordinator.Prompt("endpoints", null))
                     }
                 Action(R.string.button_recover_audio, coordinator::listAudio)
             }
@@ -365,13 +365,13 @@ class MainActivity : ComponentActivity(), PowerSyncCoordinator.Observer {
         }
     }
 
-    private fun cancelPrompt(value: PowerSyncCoordinator.Prompt) {
+    private fun cancelPrompt(value: ShioriCoordinator.Prompt) {
         prompt = null
         if (value.kind == "connect") coordinator.cancelSetup()
     }
 
     @Composable
-    private fun Confirmation(value: PowerSyncCoordinator.Prompt) {
+    private fun Confirmation(value: ShioriCoordinator.Prompt) {
         val title =
             when (value.kind) {
                 "connect" -> R.string.dialog_connect_title

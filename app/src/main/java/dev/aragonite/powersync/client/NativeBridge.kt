@@ -345,7 +345,7 @@ class NativeBridge(context: Context) {
                 data.writeString(null)
                 data.writeInt(if (master) 21 else 1)
                 data.writeString(null)
-                data.writeString("PowerSync")
+                data.writeString("Shiori")
                 data.writeString(null)
                 data.writeString(null)
                 data.writeInt(0)
@@ -479,7 +479,7 @@ class NativeBridge(context: Context) {
         private var observedApk: String? = null
         private val apkHasher =
             Executors.newSingleThreadExecutor {
-                Thread(it, "PowerSyncApkHash").apply {
+                Thread(it, "ShioriApkHash").apply {
                     isDaemon = true
                     priority = Thread.MIN_PRIORITY
                 }
@@ -506,7 +506,7 @@ class NativeBridge(context: Context) {
                     )
                 synchronized(NativeBridge::class.java) {
                     if (observation != lastFirmwareObservation) {
-                        Log.i("PowerSyncCompatibility", observation)
+                        Log.i("ShioriCompatibility", observation)
                         lastFirmwareObservation = observation
                     }
                 }

@@ -1,4 +1,18 @@
-# PowerSync implementation state
+# Shiori implementation state
+
+2026-11-07: Product branding renamed to **Shiori**, diagnostic launcher to
+**Shiori Diagnostics**, and Gradle root project to `Shiori`. UI translations,
+coordinator/theme names, log tags and new CI artifact names follow the new name.
+The release workflow targets `Shiori-sync/Shiori-onyx-boox-client`.
+Legacy application IDs, signing path, Keystore alias, server cluster prefix,
+fixture identifiers and historical release/evidence references remain unchanged.
+
+2026-11-07: Gradle modules renamed: the product is now `:app` (formerly
+`:client`), and the native diagnostic lab is `:diagnostics` (formerly `:app`).
+The diagnostic launcher label is **Shiori Diagnostics**. Application IDs,
+source packages and the persistent `signing/client.properties` path are retained
+for in-place upgrades. Older dated entries below use the module names from their
+original checkpoints.
 
 2026-10-22: **China-market Tab 8 (Android 11/API 30) connected; Palma full firmware
 update preserved native sync.** Local **0.3.5/code 16** lowers minSDK to 30 with a
@@ -11,7 +25,7 @@ enrollment completed from the updated state.
 
 Palma upgraded 4.1.1 → 4.2 with the same 0.3.4 APK, account, endpoints (apart from
 the exact enrolled template host newly retained by firmware), flags and marker.
-Native sync was observed before opening PowerSync. BOOX Freeze disabled the
+Native sync was observed before opening Shiori. BOOX Freeze disabled the
 companion separately. 0.3.5 fixes a false status warning for that narrowly verified
 schema addition; installing it afterward changed no native connection settings.
 Both devices have local 0.3.5. **65 unit tests**, lint (0 errors / 12 existing
@@ -19,7 +33,7 @@ warnings), signed assembly and device read checks pass. Published latest remains
 0.3.3. See [dated evidence](firmware-validation/20261022/README.md).
 
 2026-10-22: **Fresh Palma 2 Pro exposed an older native endpoint schema.** Local
-PowerSync **0.3.4/code 15** permits only the unsupported template-host omission
+Shiori **0.3.4/code 15** permits only the unsupported template-host omission
 when the saved pre-transition native schema proves it is absent. Account/sync
 endpoint checks remain strict. All 58 unit tests and signed build pass; lint has
 0 errors / 12 existing warnings. Certificate-matched in-place installation and
@@ -28,13 +42,13 @@ Fresh enrollment is now active with matching account/configuration and both sync
 flags enabled. Native sign-in required one **Resume connection** after its callback
 timed out. Native Library sync received 138 Reader rows, including two known
 synthetic books and shelf memberships. **4.1.x is known to work on this tested
-4.1.1 build with PowerSync 0.3.4**; this does not qualify every build or full library
+4.1.1 build with Shiori 0.3.4**; this does not qualify every build or full library
 completeness. The pre-update baseline is saved; the owner will initiate firmware
 installation. See
 [baseline, fix, and continuation](firmware-validation/20261022/README.md).
 The latest published release remains 0.3.3.
 
-2026-10-20: **[PowerSync 0.3.3 is published](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.3)**
+2026-10-20: **[Shiori 0.3.3 is published](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.3)**
 and is GitHub's latest release. Tag `v0.3.3` targets `e720b4c867e0a56f8f66dbc29ff13ab48feece56`.
 [CI run #3](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39464804296)
 passed 53 release unit tests, lint (0 errors / 12 warnings), signed assembly and
@@ -61,7 +75,7 @@ The observer changes no sync settings and exits after its bounded interval.
 Use `scripts/observe-native-sync.py` and inspect the status file/service for fresh
 results; this note records startup, not successful completion of the interval.
 
-2026-10-19: **PowerSync 0.3.3 (code 14) fixes cloud-only Library preservation and
+2026-10-19: **Shiori 0.3.3 (code 14) fixes cloud-only Library preservation and
 recovers the Go 6 II connection**. Catalog restoration no longer requires local
 book files. Resume connection uses the original baseline/enrollment, with identity,
 configuration, marker, collision and exact readback checks. All 128 baseline book
@@ -80,7 +94,7 @@ references. Baseline metadata remains saved, notebook fingerprint matches, nativ
 sign-in was incomplete and both sync flags were off at diagnosis.
 See [diagnosis and required repair](go6-enrollment-20261019.md).
 
-2026-10-19: **PowerSync 0.3.2 (code 13) removes firmware allowlists**, per owner
+2026-10-19: **Shiori 0.3.2 (code 13) removes firmware allowlists**, per owner
 request. Unknown model/API/ksync combinations attempt the native interfaces;
 firmware details are logged, with actual interface and preservation checks intact.
 Fresh 41 unit tests, release lint/build and two ordinary-UID read/service checks
@@ -90,7 +104,7 @@ metadata hashes match before and after. No enrollment or sync writes were perfor
 This is locally built and installed; the published GitHub release below remains 0.3.1.
 See [policy and device evidence](firmware-observations-20261019.md).
 
-2026-10-19: **[PowerSync 0.3.1 is published](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.1)**.
+2026-10-19: **[Shiori 0.3.1 is published](https://github.com/jdkruzr/AragonitePowerSync/releases/tag/v0.3.1)**.
 Tag `v0.3.1` points to CI-tested commit `3a56327c3172880b29d275798ca9e2b77ca7e887`.
 [Actions run #2](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39224617064)
 passed 40 tests, lint (0 errors / 12 existing warnings), signed assembly and
@@ -111,7 +125,7 @@ pinned actions. It does not publish a GitHub Release. Actionlint and synthetic
 Java Properties round-trip checks pass. See [CI release builds](github-release-build.md).
 
 2026-10-19 UTC (October 18 local): **TUCP installation and stale-join incident**.
-Signed PowerSync 0.3.1 (code 12) installs on Android 13; native support pins
+Signed Shiori 0.3.1 (code 12) installs on Android 13; native support pins
 TabUltraCPro/API 33/ksync 32174 alongside the existing Palma/Lumi pairs.
 40 unit tests, release lint/build and two ordinary-UID read/service checks pass.
 The owner then enrolled the TUCP. Native synchronization reactivated 41 server-deleted
@@ -123,7 +137,7 @@ protects that planner from automatic requeue. The other 40 reactivations and the
 stale-join reconciliation defect remain unresolved; do not call TUCP end-to-end
 sync qualified. See [evidence and cleanup](tucp-compatibility-20261019.md).
 
-2026-10-18: PowerSync **0.3.0 (code 11)** implements the streamlined setup and
+2026-10-18: Shiori **0.3.0 (code 11)** implements the streamlined setup and
 state-driven connection screen on `feature/powersync-streamlined-setup`. Both
 sync domains enable only after successful connection, with a separate explicit
 Enable action for paused existing connections. Permission/enrollment continuation,
@@ -136,11 +150,11 @@ UI/language/large-text/restart checks also pass. Physical first-time connection
 and fault-injection qualification remain pending. One labeled blank smoke
 notebook is retained. See [implementation and evidence](streamlined-setup-20261018.md).
 
-2026-10-15: PowerSync 0.2.0 (code 10) is internationalized: all user-facing text in `strings.xml`, errors as `UserError` resource IDs, per-app language support, lint guards, and a first Spanish catalog (183 entries, Claude-drafted, needs native review). Verified in Spanish on the Palma; installed on both tablets (language left on system default). See [i18n plan](i18n-plan-20261015.md) and [translating](translating.md).
+2026-10-15: Shiori 0.2.0 (code 10) is internationalized: all user-facing text in `strings.xml`, errors as `UserError` resource IDs, per-app language support, lint guards, and a first Spanish catalog (183 entries, Claude-drafted, needs native review). Verified in Spanish on the Palma; installed on both tablets (language left on system default). See [i18n plan](i18n-plan-20261015.md) and [translating](translating.md).
 
-2026-10-15: PowerSync 0.1.8 (code 9) adds **Update server endpoints**, an in-place update of the connected custom cluster's endpoint values (no switch, no sign-in): fetches `GET /api/v1/boox/device/endpoints`, validates, previews changes, journals previous entry/marker/flags in `endpoint-update`, rewrites marker and clusterMap entry, requires ksync refresh (81) success, verifies, restores flags, broadcasts cluster-reload actions; rolls back on failure. Evidence basis (decompile): 81 rebuilds the cluster list from Onyx's index plus the marker, keeps `curClusterId` unless the id vanishes (which logs out), and does not log out otherwise. Applied on Palma then Lumi on 2026-10-15: exactly four values changed (cloud data, log, shop to stock Onyx; material host to Alexandria's Template Hub page), account and selection preserved, after-states identical; firmware checks reach Onyx after a reboot. Client tests (23), build and lint pass.
+2026-10-15: Shiori 0.1.8 (code 9) adds **Update server endpoints**, an in-place update of the connected custom cluster's endpoint values (no switch, no sign-in): fetches `GET /api/v1/boox/device/endpoints`, validates, previews changes, journals previous entry/marker/flags in `endpoint-update`, rewrites marker and clusterMap entry, requires ksync refresh (81) success, verifies, restores flags, broadcasts cluster-reload actions; rolls back on failure. Evidence basis (decompile): 81 rebuilds the cluster list from Onyx's index plus the marker, keeps `curClusterId` unless the id vanishes (which logs out), and does not log out otherwise. Applied on Palma then Lumi on 2026-10-15: exactly four values changed (cloud data, log, shop to stock Onyx; material host to Alexandria's Template Hub page), account and selection preserved, after-states identical; firmware checks reach Onyx after a reboot. Client tests (23), build and lint pass.
 
-2026-10-15: PowerSync 0.1.6 (code 7) lets three cluster fields stay on stock Onyx (US): `onyxCloudDataHostBaseUrl` = `https://en-data.boox.com` (firmware updates; mode 3, confirmed with CFR), `onyxLogHostBaseUrl` = `https://en-lon.boox.com` (unused) and `shopBookUrl` = `https://push.boox.com`. `EndpointProfile.validate` accepts exactly those values for exactly those fields; every other field must still be same-origin with the enrolled server (decompile shows they carry the account token, and a 401 on a token call can log the device out). Alexandria generates the split profile and serves a scriptless Template Hub explanation page as the material host. Client tests (21), release build and lint (0 errors, 20 existing warnings) pass; signing certificate matches; installed in place on Lumi and Palma. **Not yet applied on either tablet**: their live cluster entries still use the old all-Alexandria hosts until re-applied. Evidence and live request log: Alexandria `docs/boox-cloud-services-20261015.md`.
+2026-10-15: Shiori 0.1.6 (code 7) lets three cluster fields stay on stock Onyx (US): `onyxCloudDataHostBaseUrl` = `https://en-data.boox.com` (firmware updates; mode 3, confirmed with CFR), `onyxLogHostBaseUrl` = `https://en-lon.boox.com` (unused) and `shopBookUrl` = `https://push.boox.com`. `EndpointProfile.validate` accepts exactly those values for exactly those fields; every other field must still be same-origin with the enrolled server (decompile shows they carry the account token, and a 401 on a token call can log the device out). Alexandria generates the split profile and serves a scriptless Template Hub explanation page as the material host. Client tests (21), release build and lint (0 errors, 20 existing warnings) pass; signing certificate matches; installed in place on Lumi and Palma. **Not yet applied on either tablet**: their live cluster entries still use the old all-Alexandria hosts until re-applied. Evidence and live request log: Alexandria `docs/boox-cloud-services-20261015.md`.
 
 2026-10-13: Shared Aragonite crystal icon refresh is staged for the next release.
 The new transparent composition and all five legacy launcher sizes are packaged;
@@ -151,15 +165,15 @@ transparency and rendering on white/black match the source, and the existing sig
 certificate is verified. Version remains 0.1.5 (code 6). No device installation
 was performed, as requested.
 
-2026-10-11: PowerSync 0.1.5 adds explicit exact-hash MP3 cache recovery with private backups, paired with Alexandria’s owner audio preview/publication UI. Signed in-place upgrades preserve both device libraries/settings; ordinary app recovery restores the disposable recording exactly on both devices. Personal audio untouched; PCM and listened-to playback remain separate. Required affected server tests and Android release checks pass. A 48-hour read-only observer and verified independent-backup copy are running as user services; neither is marked passed yet. See the [qualification follow-up](qualification-campaign-20261010.md#companion-audio-recovery--2026-10-11-follow-up).
+2026-10-11: Shiori 0.1.5 adds explicit exact-hash MP3 cache recovery with private backups, paired with Alexandria’s owner audio preview/publication UI. Signed in-place upgrades preserve both device libraries/settings; ordinary app recovery restores the disposable recording exactly on both devices. Personal audio untouched; PCM and listened-to playback remain separate. Required affected server tests and Android release checks pass. A 48-hour read-only observer and verified independent-backup copy are running as user services; neither is marked passed yet. See the [qualification follow-up](qualification-campaign-20261010.md#companion-audio-recovery--2026-10-11-follow-up).
 
-2026-10-11: Qualification round closed with documented limits. Two-hour observer completed: 121 samples; two readiness failures coincide with planned cold backups; no device-observation errors or unexplained catalog transitions; batteries 24.4–27.1°C. Both tablets remain on production and pass explicit native Library sync after the final restart. All temporary faults, timers, tunnel and restored stacks are stopped. Latest clean-stop backup restores all 51,982 native immutable objects exactly. Required tests pass; all 15 changed Go runtime files match deployment. See the PowerSync qualification campaign for evidence and deferred cases.
+2026-10-11: Qualification round closed with documented limits. Two-hour observer completed: 121 samples; two readiness failures coincide with planned cold backups; no device-observation errors or unexplained catalog transitions; batteries 24.4–27.1°C. Both tablets remain on production and pass explicit native Library sync after the final restart. All temporary faults, timers, tunnel and restored stacks are stopped. Latest clean-stop backup restores all 51,982 native immutable objects exactly. Required tests pass; all 15 changed Go runtime files match deployment. See the Shiori qualification campaign for evidence and deferred cases.
 
 2026-10-11: Final clean-stop backup `cold-20261011T104536Z` and separate fresh restore pass: 38,999 body + 12,983 revision objects hash exactly, owner/anonymous access boundaries pass, latest app image ready after proper dependency ordering. SeaweedFS now gets 60 seconds to stop; cold backup records exit/OOM states and refuses forced-stop publication. Both changes are deployed and tested. Tablets retain production configuration; all 1,081 active sync-enabled Lumi catalog entries match Palma. The bounded observer completed at 11:12 UTC. Full evidence and limitations are in the qualification campaign.
 
 2026-10-11: Fresh physical restore and live Palma endpoint rehearsal pass: 38,999 body objects verified; unchanged 1,524 notebook/135 book catalogs; native EPUB and repaired MP3 redownload exact from clone. Original production endpoint, marker and flags restored; tunnel stopped. Deployed dependency-aware readiness (PG/S3/configured BOOX database and bounded document query); required fresh race tests and public probes pass. Bounded two-hour observation is complete. See the qualification campaign for limits and private evidence.
 
-2026-10-11: Native EPUB logical deletion/Recycle Bin restoration, cross-pagination bookmark, exhausted GET/cover retry and exhausted ink PUT/Library sync retry now pass. R renders on Palma; 20 paired resource hashes match. Reopen/close alone did not retry failed Reader uploads. A native Back-dismissed sync prompt stranded close; same-document reactivation preserved ink. Temporary proxy faults are removed with exact config restoration verified. See the PowerSync qualification campaign.
+2026-10-11: Native EPUB logical deletion/Recycle Bin restoration, cross-pagination bookmark, exhausted GET/cover retry and exhausted ink PUT/Library sync retry now pass. R renders on Palma; 20 paired resource hashes match. Reopen/close alone did not retry failed Reader uploads. A native Back-dismissed sync prompt stranded close; same-document reactivation preserved ink. Temporary proxy faults are removed with exact config restoration verified. See the Shiori qualification campaign.
 
 2026-10-11: Deployed explicit BOOX reading-data refresh UI with native revision fences, idempotent publication and separate server/device status. Corrected web highlight/bookmark lifecycle filters (Reader status 0 active, 1 removed). Required PG/S3 race tests and public form checks pass. Native codec probes on both devices validate removal of ONY1 duplicate IV; explicit audio repair endpoint is deployed. Synthetic MP3 native redownload recovers exact original bytes after controlled cache eviction; existing MP3 caches do not refresh on publication alone. Personal audio untouched. See the qualification campaign for evidence and limits.
 
@@ -167,7 +181,7 @@ was performed, as requested.
 
 2026-10-10: [Seven-part qualification campaign](qualification-campaign-20261010.md) in progress. Isolated physical restore and all 38,969 retained BOOX body hashes pass; paired PDF bytes and four page geometries render. All 654 initially absent notebook resources recovered exactly after native Notes sync. Six audio files reproduce a native duplicated-IV decoder defect; all six decode to exact original backup bytes. Representative notebook rendering, PDF source redownload, offline reading-position convergence and retained-alternative restoration now pass. Campaign paused at owner request: A/B resources match server on both devices (16 checks), but visible ink has not converged. Wi-Fi enabled, readers closed, log/monitor stopped; see campaign pause handoff.
 
-2026-10-10: [Fresh Palma restore](fresh-palma-restore-20261010.md) in progress after user factory reset. Zero native notebook/book rows captured. Fixed uninitialized native system-config handling in signed PowerSync 0.1.4; release tests/build/lint and live status pass. Signed-out enrollment and native connect succeed; initial catalog/resource catch-up observed. Complete restore and rendering not yet qualified.
+2026-10-10: [Fresh Palma restore](fresh-palma-restore-20261010.md) in progress after user factory reset. Zero native notebook/book rows captured. Fixed uninitialized native system-config handling in signed Shiori 0.1.4; release tests/build/lint and live status pass. Signed-out enrollment and native connect succeed; initial catalog/resource catch-up observed. Complete restore and rendering not yet qualified.
 
 2026-10-09: [Native book-file sync static evidence](native-book-file-sync-static-20261009.md): fresh Go6 ksync 32198 and Palma 32173 BookSyncFile decompilations match and implement real OSS source-book upload/download. Library UI supports explicit single/batch upload, gated by local source, quota and configurable file size. Pending discovery is separate from download. Alexandria end-to-end book transport remains unqualified.
 
@@ -177,7 +191,7 @@ was performed, as requested.
 
 2026-10-09: Signed 0.1.3 installed in place on Palma for [cached-account collision recovery](existing-library-enrollment.md#cached-account-collision-recovery--013-2026-10-09). Preserve all rows native login can displace by UID or numeric ID; compare again before login; restore with full preflight/readback, conditional mutations and interruption replay. Nine recovery-policy tests, all client tests, build/lint and upgrade account/library preservation pass. User retains enrollment and will drive Connect; actual multi-row native round trip remains pending. Palma live configuration was the old lab cluster despite `restored` journal status, correcting the earlier original-Onyx assumption. Lumi unchanged.
 
-2026-10-09: [Existing-library enrollment](existing-library-enrollment.md) is deployed and qualified on Lumi with signed PowerSync 0.1.2. Original owner UID is preserved; paused Onyx return restores the account and catalog exactly. Enabled connection automatically uploaded 33,608 resources (1,056,234,304 logical bytes); all 31,430 distinct S3 bodies pass independent hash/length read-back. Eligible original-owner notebook/folder metadata is present, with explicit disabled-fixture exclusions. All backup-file exceptions are classified, including six audio wrappers decoded back to exact originals. Native Settings storage display is repaired; its 1 TiB quota remains a fixed compatibility value. Lumi stays connected with both domains enabled; Palma is unchanged. Full new-device restore and universal resource-reference closure remain separate gates.
+2026-10-09: [Existing-library enrollment](existing-library-enrollment.md) is deployed and qualified on Lumi with signed Shiori 0.1.2. Original owner UID is preserved; paused Onyx return restores the account and catalog exactly. Enabled connection automatically uploaded 33,608 resources (1,056,234,304 logical bytes); all 31,430 distinct S3 bodies pass independent hash/length read-back. Eligible original-owner notebook/folder metadata is present, with explicit disabled-fixture exclusions. All backup-file exceptions are classified, including six audio wrappers decoded back to exact originals. Native Settings storage display is repaired; its 1 TiB quota remains a fixed compatibility value. Lumi stays connected with both domains enabled; Palma is unchanged. Full new-device restore and universal resource-reference closure remain separate gates.
 
 2026-10-08: Approved aragonite/sync artwork is the standard product icon in signed release 0.1.1 (version code 2). Adaptive/themed icons and legacy density PNGs are included; the probe retains its identity. [Icon source and packaging](../design/icons/README.md). Build/lint pass; in-place upgrades preserve the signing identity and saved configuration. Evidence: `artifacts/product-build-20261008-icon-v0.1.1/`.
 
@@ -269,7 +283,7 @@ was performed, as requested.
 2026-10-07: [Concurrent native ink](native-reader-concurrent-ink.md) preserves both independently written P/L strokes despite one mode-7 configuration winning. Ordinary incremental pulls merge both letters; five matching shape records and four exact pressure files, visible rendering and replay/personal-library guards pass. No host refresh or native source push retry; full recovery unnecessary. Automatic first-attempt application remains unqualified. Same-shape partial/full erase is next.
 
 
-2026-10-07 staged: real concurrent ink experiment awaits user edits on both devices: P on Palma, L on Lumi, then Back to save each. Both open PowerSync-reader-clean-v2.pdf; exact ink/pressure and original-library guards pass. Initial baseline is sealed in artifacts/gateway-lab/qualification/reader-native-ink-conflict. Replication proxy 18766 is intentionally stopped, asset/account facade 18765 remains available. Capture passive local/server candidates before reconnect or retry.
+2026-10-07 staged: real concurrent ink experiment awaits user edits on both devices: P on Palma, L on Lumi, then Back to save each. Both open Shiori-reader-clean-v2.pdf; exact ink/pressure and original-library guards pass. Initial baseline is sealed in artifacts/gateway-lab/qualification/reader-native-ink-conflict. Replication proxy 18766 is intentionally stopped, asset/account facade 18765 remains available. Capture passive local/server candidates before reconnect or retry.
 
 
 2026-10-07: [Reader grants and clean conflicts](native-reader-grants-and-clean-conflicts.md) pass real session replacement without manual reader grants, two clean reconnect orders, and native document width application on both devices. Twelve policy/account tests and Android build/lint pass. Native configuration can change with callback newData=false. Ink/pressure and original-library guards remain exact. Real concurrent ink edits are next; lab endpoints and the explicit reader-session-grants marker remain staged.
@@ -686,7 +700,7 @@ A semantic identity for single oil-pen shape records remained unchanged across
 two native exports even though their archive manifests changed. Full notebook
 identity still needs metadata, resources and multi-shape support.
 
-Same-notebook write-back now has real fixture evidence: PowerSync wrote a text
+Same-notebook write-back now has real fixture evidence: Shiori wrote a text
 resource, Notes displayed it and accepted a native edit, and both appeared in the
 next export. A synthetic oil-pen stroke was imported and revised under the same
 notebook and shape IDs. Re-export preserved all 101 point records byte-for-byte.
@@ -714,7 +728,7 @@ The Palma 2 Pro is now connected. Its ordinary-UID probe passes Notes/ksync
 binding, metadata queries, page callbacks and shared-storage access on API 35,
 Notes 45960 and ksync 32173. The newer shape provider has the same missing-table
 failure. Its library already contains the Lumi ink fixture ID; this existing
-copy does not demonstrate independent PowerSync transfer. Its separate text
+copy does not demonstrate independent Shiori transfer. Its separate text
 fixture passes creation, cloud-disable, same-ID rename and native export with
 ZIP integrity validation. Use separate journaled fixtures for Palma writes.
 Raw reports live under ignored artifacts/palma2pro.
@@ -742,7 +756,7 @@ preserved point bytes. Fresh account-free library creation and full write-back
 remain unqualified.
 
 No Rhizome protocol integration is implemented yet. The account-independent
-adapter and separate PowerSync dataset remain the approved architecture; native
+adapter and separate Shiori dataset remain the approved architecture; native
 retargeting is now a demonstrated alternative requiring a decision after the
 remaining content gate is qualified.
 

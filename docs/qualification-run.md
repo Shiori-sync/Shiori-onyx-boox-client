@@ -84,7 +84,7 @@ therefore cannot yet be attributed solely to a Couchbase conflict resolver.
 
 ## Device availability and verification
 
-The launcher's “No result” was its empty Apps panel, not PowerSync output.
+The launcher's “No result” was its empty Apps panel, not Shiori output.
 A missing cluster definition is a candidate cause, but launcher fallback means
 that alone is insufficient proof. No launcher data was cleared; Lumi showed a
 populated Apps panel after reconnection.
@@ -129,7 +129,7 @@ original account and note/reader sync true/true. Original library
 identity/status/ownership fingerprints still match on both, excluding explicitly
 allowlisted disposable/recovery copies. This guard does not compare all content
 bytes. Test-server markers and only lab reverse ports 18765/18766 were removed.
-Generated PowerSync-export archive copies were cleaned up; recovery copies and
+Generated Shiori-export archive copies were cleaned up; recovery copies and
 original notebooks were retained. Gateway policy/principal grants and trace
 logging were restored, temporary fault files removed, and the shim, proxy and
 Couchbase/Gateway containers stopped without deleting volumes. Neither device

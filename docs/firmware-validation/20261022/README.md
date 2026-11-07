@@ -24,7 +24,7 @@ Two ordinary-product-UID native read/service checks passed.
 ## Compatibility failure and correction
 
 Enrollment redeemed successfully, but the native cluster refresh dropped
-`clusterHost.onyxMaterialHostBaseUrl`. PowerSync correctly stopped before native
+`clusterHost.onyxMaterialHostBaseUrl`. Shiori correctly stopped before native
 sign-in or enabling sync. The saved baseline remained intact, with no account,
 notebooks, or Reader rows created. A read-only diagnostic compared the full saved
 and refreshed custom entry: that field was the only difference.
@@ -50,14 +50,14 @@ release lint has zero errors and the same 12 warnings. Signed release/test assem
 passed. [Build identity](local-build.json). The read-only diagnostic now reports
 configuration difference paths without exposing their values.
 
-PowerSync's normal Return to previous server flow then restored the exact original
+Shiori's normal Return to previous server flow then restored the exact original
 cluster-map hash, selected server, account/library state, and sync flags. The custom
 marker was removed. Recovery did not require the server or manual native writes.
 
 ## Pre-update checkpoint
 
 **4.1.x compatibility is confirmed on this tested 4.1.1 build with local
-PowerSync 0.3.4/code 15.** This is observed device evidence, not a claim that every
+Shiori 0.3.4/code 15.** This is observed device evidence, not a claim that every
 4.1.x firmware/model combination has been tested or a firmware allowlist.
 
 After management connectivity returned, fresh enrollment and native sign-in
@@ -79,10 +79,10 @@ The final [pre-update checkpoint](pre-update.json) confirms:
   native shelf memberships. The owner also observed sync arriving.
 - The notebook catalog was still empty at the captured checkpoint; neither full
   notebook synchronization nor complete source-file downloads are claimed.
-- The disposable read-only diagnostic package was removed. PowerSync remains
+- The disposable read-only diagnostic package was removed. Shiori remains
   connected. No firmware update has been started by the agent.
 
-PowerSync 0.3.4 and this firmware build were held fixed for the firmware experiment.
+Shiori 0.3.4 and this firmware build were held fixed for the firmware experiment.
 
 ### First firmware download attempt
 
@@ -90,7 +90,7 @@ The owner attempted the full update. At 00:18 local time the native updater
 reported **Download failed**. Logs show `SocketTimeoutException` connecting to
 `firmware.boox.com:80`, with repeated 3-second connection timeouts across its
 resolved addresses. The firmware/build and boot ID are unchanged: no reboot or
-completed installation occurred. PowerSync was not opened during diagnosis.
+completed installation occurred. Shiori was not opened during diagnosis.
 [Read-only comparison](download-failure.json) confirms account identity, selected
 cluster/endpoints, sync flags, marker, All Files Access, and installed APK bytes
 are unchanged from the pre-update baseline.
@@ -105,20 +105,20 @@ server root cause. This attempt did not exercise firmware persistence.
 The owner's retry installed `2026-08-10_11-54_4.2-rel_0810_74616a570`, incremental
 230, Android 15/API 35, security patch 2026-04-01. A changed boot ID confirms a
 reboot. Native ksync is now 32173, Notes 45960 and Reader 38999.
-[Post-update comparison](post-update.json) was captured **before opening PowerSync
+[Post-update comparison](post-update.json) was captured **before opening Shiori
 or repairing anything**:
 
 - Same account identity, selected Alexandria cluster, both enabled sync flags,
-  native marker, All Files Access, and byte-identical PowerSync 0.3.4 APK.
+  native marker, All Files Access, and byte-identical Shiori 0.3.4 APK.
 - Native sync was already operating: 138 Reader rows and 1,125 note/folder rows;
   the bounded native log window reported successful transfer tasks. These are
   observations, not proof of complete resource downloads or distinct task counts.
 - The sole selected-entry difference is the newer firmware adding
   `clusterHost.onyxMaterialHostBaseUrl`, matching the saved enrollment value.
-- PowerSync itself was disabled (`enabled=3`, previously `1`). The owner identified
+- Shiori itself was disabled (`enabled=3`, previously `1`). The owner identified
   BOOX's Freeze policy. Native sync continued while the companion was disabled.
   The app was enabled separately; later Settings inspection showed **Freeze new
-  apps off**, **Auto Freeze: Do not freeze**, and PowerSync unfrozen. No global
+  apps off**, **Auto Freeze: Do not freeze**, and Shiori unfrozen. No global
   Freeze setting was changed by the agent.
 
 Opening 0.3.4 exposed a status defect: it compared the older saved eight-field

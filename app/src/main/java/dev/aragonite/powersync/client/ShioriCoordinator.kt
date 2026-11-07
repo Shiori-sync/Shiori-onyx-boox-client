@@ -10,7 +10,7 @@ import java.util.concurrent.Executors
 import org.json.JSONObject
 
 /** Process-owned work and results. The application context is the only retained context. */
-class PowerSyncCoordinator private constructor(private val context: Context) {
+class ShioriCoordinator private constructor(private val context: Context) {
     fun interface Observer {
         fun changed()
     }
@@ -391,11 +391,11 @@ class PowerSyncCoordinator private constructor(private val context: Context) {
     companion object {
         private const val ENDPOINT_CHECK_INTERVAL_MS = 15 * 60 * 1000L
 
-        @SuppressLint("StaticFieldLeak") private var instance: PowerSyncCoordinator? = null
+        @SuppressLint("StaticFieldLeak") private var instance: ShioriCoordinator? = null
 
         @JvmStatic
         @Synchronized
-        fun get(context: Context): PowerSyncCoordinator =
-            instance ?: PowerSyncCoordinator(context.applicationContext).also { instance = it }
+        fun get(context: Context): ShioriCoordinator =
+            instance ?: ShioriCoordinator(context.applicationContext).also { instance = it }
     }
 }

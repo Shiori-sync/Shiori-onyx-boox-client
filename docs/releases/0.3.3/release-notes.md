@@ -1,15 +1,15 @@
-Download **PowerSync-0.3.3.apk** below. This release removes the firmware allowlist and fixes preservation of cloud-only Library entries when changing servers.
+Download **Shiori-0.3.3.apk** below. This release removes the firmware allowlist and fixes preservation of cloud-only Library entries when changing servers.
 
 ## Changes since 0.3.1
 
-- **No more “firmware not qualified” refusal.** PowerSync attempts the native interfaces on unfamiliar BOOX models and firmware versions, including endpoint changes. There is no model/API/ksync allowlist, warning override, or extra confirmation. Observed firmware details are logged for troubleshooting; actual interface, response and data-preservation checks still apply. Android 13 or later is required.
+- **No more “firmware not qualified” refusal.** Shiori attempts the native interfaces on unfamiliar BOOX models and firmware versions, including endpoint changes. There is no model/API/ksync allowlist, warning override, or extra confirmation. Observed firmware details are logged for troubleshooting; actual interface, response and data-preservation checks still apply. Android 13 or later is required.
 - **Preserve cloud-only Library entries.** A book does not need to be downloaded locally for its saved Library metadata to be restored after a server change. Existing rows and newer metadata are preserved.
 - **Resume interrupted connections.** Resume connection uses the saved enrollment and original baseline when the selected server and account state match. It restores missing catalog entries, completes sign-in and enables notebook/reading sync without repeating the server switch or redeeming another enrollment code. Opening or upgrading the app does not automatically resume a connection.
 - English and Spanish guidance for the recovery flow.
 
 ## Installation and build
 
-Install over the existing PowerSync app. The application ID and original signing certificate are unchanged, preserving app data and configuration.
+Install over the existing Shiori app. The application ID and original signing certificate are unchanged, preserving app data and configuration.
 
 This is the exact signed APK from [GitHub Actions run #3](https://github.com/jdkruzr/AragonitePowerSync/actions/runs/39464804296), source commit `e720b4c867e0a56f8f66dbc29ff13ab48feece56`.
 

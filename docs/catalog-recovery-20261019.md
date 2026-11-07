@@ -1,7 +1,7 @@
-# Cloud-only Library recovery — PowerSync 0.3.3, 2026-10-19
+# Cloud-only Library recovery — Shiori 0.3.3, 2026-10-19
 
-The Go 6 II enrollment exposed a PowerSync bug: native cluster switching removed
-Library rows, and PowerSync refused to restore a saved row without a local book
+The Go 6 II enrollment exposed a Shiori bug: native cluster switching removed
+Library rows, and Shiori refused to restore a saved row without a local book
 file. Synced metadata for undownloaded books is normal BOOX Library behavior.
 
 ## Change

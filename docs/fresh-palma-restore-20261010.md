@@ -1,16 +1,16 @@
 # Fresh Palma restoration — 2026-10-10
 
-User performed a factory reset of Palma `bbb70bef`; Lumi and server were preserved. Before product installation, native NoteModel and Metadata providers both returned zero rows; PowerSync was absent. `.ksync` contained native Couchbase initialization but no previous shared document/point trees. Raw baseline is private under `artifacts/fresh-palma-20261010/`.
+User performed a factory reset of Palma `bbb70bef`; Lumi and server were preserved. Before product installation, native NoteModel and Metadata providers both returned zero rows; Shiori was absent. `.ksync` contained native Couchbase initialization but no previous shared document/point trees. Raw baseline is private under `artifacts/fresh-palma-20261010/`.
 
 ## Fresh-install defect and fix
 
-The native `ONYX_SYSTEM_CONFIG_KEY` binder reply contained a zero-length string. PowerSync 0.1.3 attempted to parse it as JSON and stopped before enrollment. Native SystemConfigBean defaults to an empty configMap; native notebook/Reader getters default to false. PowerSync 0.1.4 now recognizes the empty system-config state, defaults absent flags to false, preserves unrelated existing settings, and still rejects malformed JSON/maps/flags and an empty cluster definition. Release unit tests (including five new configuration cases), signed release build and lint pass under Java 17. In-place installation succeeds and the native status screen reports signed out, both sync flags false, not_configured. Reading status did not write native settings.
+The native `ONYX_SYSTEM_CONFIG_KEY` binder reply contained a zero-length string. Shiori 0.1.3 attempted to parse it as JSON and stopped before enrollment. Native SystemConfigBean defaults to an empty configMap; native notebook/Reader getters default to false. Shiori 0.1.4 now recognizes the empty system-config state, defaults absent flags to false, preserves unrelated existing settings, and still rejects malformed JSON/maps/flags and an empty cluster definition. Release unit tests (including five new configuration cases), signed release build and lint pass under Java 17. In-place installation succeeds and the native status screen reports signed out, both sync flags false, not_configured. Reading status did not write native settings.
 
 BOOX auto-freeze also disabled the installed app. The user corrected the persistent freeze setting; `pm enable` alone is insufficient while that policy remains enabled. All Files Access granted through the standard Android settings screen.
 
 ## Enrollment and observations
 
-SSH access resumed after the user restored VPN connectivity. Captured server notebook projections and live object bindings before enrollment. Created a one-use code through the authenticated public owner form, entered it in PowerSync, and enrolled while signed out of Onyx. Both sync domains were explicitly selected. Native connect completed without an Onyx login, manual provider injection, or copied library assets.
+SSH access resumed after the user restored VPN connectivity. Captured server notebook projections and live object bindings before enrollment. Created a one-use code through the authenticated public owner form, entered it in Shiori, and enrolled while signed out of Onyx. Both sync domains were explicitly selected. Native connect completed without an Onyx login, manual provider injection, or copied library assets.
 
 First concurrent provider/resource capture: Palma 1,380 total notebook/folder rows, 980 active and sync-enabled, 1,117 shared resource files. Lumi 1,523 total rows, 1,082 active, 1,080 active sync-enabled. This is an in-progress catch-up observation, not a complete restore claim. Ongoing native log capture is private; final resource closure and visible rendering remain to be assessed.
 
