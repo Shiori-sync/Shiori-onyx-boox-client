@@ -15,16 +15,16 @@ val signingProps =
     Properties().apply { if (signingFile.exists()) signingFile.inputStream().use { load(it) } }
 
 android {
-    namespace = "dev.aragonite.powersync.client"
+    namespace = "ru.feryafox.shiori"
     compileSdk = 35
     testBuildType = "release"
     defaultConfig {
-        applicationId = "dev.aragonite.powersync.client"
+        applicationId = "ru.feryafox.shiori"
         minSdk = 30
         targetSdk = 35
         versionCode = 16
         versionName = "0.3.5"
-        testInstrumentationRunner = "dev.aragonite.powersync.client.NativeReadCompatibilityTest"
+        testInstrumentationRunner = "ru.feryafox.shiori.NativeReadCompatibilityTest"
     }
     // Per-app language (Android Settings → App languages) lists every values-<locale> folder.
     androidResources { generateLocaleConfig = true }

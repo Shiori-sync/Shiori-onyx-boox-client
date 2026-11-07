@@ -63,7 +63,7 @@ def main():
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(config, indent=2) + '\n')
     # Host observation is staged only in our own application's private directory.
-    subprocess.run(['adb', '-s', args.serial, 'exec-in', 'run-as', 'dev.aragonite.powersync',
+    subprocess.run(['adb', '-s', args.serial, 'exec-in', 'run-as', 'ru.feryafox.shiori.diagnostics',
                     'sh', '-c', 'cat > files/cluster-config-observed.json'],
                    input=json.dumps(config).encode(), check=True, stdout=subprocess.DEVNULL)
     print(json.dumps({'clusterId': config['curClusterId'],

@@ -5,10 +5,10 @@ plugins {
 }
 
 android {
-    namespace = "dev.aragonite.powersync"
+    namespace = "ru.feryafox.shiori.diagnostics"
     compileSdk = 35
     defaultConfig {
-        applicationId = "dev.aragonite.powersync"
+        applicationId = "ru.feryafox.shiori.diagnostics"
         minSdk = 30
         targetSdk = 35
         versionCode = 1

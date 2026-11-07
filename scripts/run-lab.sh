@@ -25,5 +25,5 @@ case "$action" in
   *) echo "Unknown lab action: $action" >&2; exit 2 ;;
 esac
 # Restart only our app so debug intents reliably run on current BOOX firmware.
-adb -s "$serial" shell am force-stop dev.aragonite.powersync
-adb -s "$serial" shell am start -n dev.aragonite.powersync/.MainActivity --es lab_action "$action"
+adb -s "$serial" shell am force-stop ru.feryafox.shiori.diagnostics
+adb -s "$serial" shell am start -n ru.feryafox.shiori.diagnostics/.MainActivity --es lab_action "$action"

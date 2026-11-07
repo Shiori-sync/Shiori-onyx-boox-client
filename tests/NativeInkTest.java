@@ -1,4 +1,4 @@
-package dev.aragonite.powersync;
+package ru.feryafox.shiori.diagnostics;
 
 import java.io.*;
 import java.nio.*;

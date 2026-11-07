@@ -1,16 +1,18 @@
 # Shiori
 
 The project is now named **Shiori**; the diagnostic app is **Shiori Diagnostics**.
-Legacy application IDs (`dev.aragonite.powersync.client` and
-`dev.aragonite.powersync`), signing configuration, Android Keystore alias,
-server cluster IDs and lab fixture paths retain their original spelling for
-compatibility with existing installations and preserved evidence. Historical
-release links and recorded artifact names also remain unchanged.
+Application/source packages are `ru.feryafox.shiori` and
+`ru.feryafox.shiori.diagnostics`. These are new Android application identities;
+existing `dev.aragonite.powersync.client` / `dev.aragonite.powersync` installations
+retain their private data separately. This change does not migrate that data.
+Signing configuration, Android Keystore alias, server cluster IDs and lab fixture
+paths retain their original spelling. Historical release links and recorded
+artifact names also remain unchanged.
 
 Dedicated BOOX native-note adapter and, eventually, Rhizome sync companion for
 Alexandria Server. Shiori is a separate source dataset from the Alexandria client.
 
-The signed product app is `:app` (`dev.aragonite.powersync.client`). It enrolls
+The signed product app is `:app` (`ru.feryafox.shiori`). It enrolls
 with an Alexandria native BOOX server, configures stock ksync and restores its
 previous configuration offline. Local Shiori 0.3.5 requires Android 11 (API 30)
 or later; the published 0.3.3 requires Android 13. It attempts the native interfaces
@@ -59,7 +61,7 @@ configures native BOOX sync; it does not itself render or author notebook conten
 
 ## Diagnostic probe
 
-The `:diagnostics` module is the Shiori Diagnostics app (`dev.aragonite.powersync`).
+The `:diagnostics` module is the Shiori Diagnostics app (`ru.feryafox.shiori.diagnostics`).
 It probes Notes/ksync Binder access, metadata providers, page callbacks and storage
 from an ordinary application UID. Fixture actions operate only on the disposable text and ink notebooks journaled
 by this installation. Native export, text-resource writes, and single-stroke
@@ -70,7 +72,7 @@ Build: `JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 ./gradlew :diagnostics:asse
 Install: `adb -s SERIAL install -r diagnostics/build/outputs/apk/debug/diagnostics-debug.apk`.
 
 Read-only probe: `scripts/run-lab.sh SERIAL probe`.
-Read the private report with `adb -s SERIAL shell run-as dev.aragonite.powersync cat files/probe.json`.
+Read the private report with `adb -s SERIAL shell run-as ru.feryafox.shiori.diagnostics cat files/probe.json`.
 Debug text actions: `create_fixture`, `rename_fixture`, `capture_fixture`,
 `export_fixture`, `open_fixture`, `write_fixture`, `disable_fixture`.
 Ink actions: `create_ink` (native creation screen), `capture_ink`, `export_ink`,

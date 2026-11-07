@@ -1,5 +1,12 @@
 # Shiori implementation state
 
+2026-11-07: Source packages, namespaces and application IDs migrated to
+`ru.feryafox.shiori` (`:app`) and `ru.feryafox.shiori.diagnostics`
+(`:diagnostics`), including tests and lab commands. These install separately from
+the legacy apps; their private data is not automatically migrated. Vendor AIDL
+packages remain unchanged for Binder compatibility. Earlier identity-preservation
+notes below describe their previous checkpoints.
+
 2026-11-07: Product branding renamed to **Shiori**, diagnostic launcher to
 **Shiori Diagnostics**, and Gradle root project to `Shiori`. UI translations,
 coordinator/theme names, log tags and new CI artifact names follow the new name.

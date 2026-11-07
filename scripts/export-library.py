@@ -12,7 +12,7 @@ import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 STATE=ROOT/'artifacts/full-library'
-PACKAGE='dev.aragonite.powersync'
+PACKAGE='ru.feryafox.shiori.diagnostics'
 
 def adb(serial,*args,**kwargs):return subprocess.run(['adb','-s',serial,*args],check=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,**kwargs).stdout
 

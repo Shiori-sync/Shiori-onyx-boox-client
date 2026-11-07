@@ -7,3 +7,8 @@ same-notebook editable write-back. Do not call metadata capture a full snapshot.
 Use disposable fixtures for writes. Preserve existing libraries and original
 Rhizome provenance; journal external native application separately from receipt.
 Report stock-ksync retargeting evidence before changing the agreed architecture.
+
+Project-owned Kotlin/Java classes use packages under `ru.feryafox`: the main app
+uses `ru.feryafox.shiori`, diagnostics uses `ru.feryafox.shiori.diagnostics`.
+Keep reconstructed BOOX AIDL/Parcelable packages unchanged: their qualified names
+are native Binder protocol contracts, not project-owned package naming.
