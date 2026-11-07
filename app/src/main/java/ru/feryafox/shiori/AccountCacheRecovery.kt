@@ -1,4 +1,4 @@
-ввpackage ru.feryafox.shiori
+package ru.feryafox.shiori
 
 import java.io.IOException
 
